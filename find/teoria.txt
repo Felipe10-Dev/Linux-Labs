@@ -1,0 +1,34 @@
+
+¿Que es?
+find es un comando de Linux que permite buscar archivos y directorios dentro del sistema de archivos
+
+
+¿Para que sirve?
+
+- localizar archivos por nombre
+- buscar por tipo (archivo o carpeta)
+- buscar por tamano 
+- buscar por permisos
+- ejecutar acciones sobre archivos encontrados
+
+Sintaxis basica:
+find [ruta] [opciones]
+
+Ejemplos:
+find . -> busca todo desde el directorio actual
+find . -type f -> busca solo archivos
+find . -type d -> busca solo directorios
+find . -name "*.log" -> busca archivos .log
+find . -iname "*.txt" -> busca ignorando mayusculas/minusculas
+
+Opciones importantes: 
+ 
+-type f = archivos 
+-type d = directorios
+-name = nombre exacto
+-iname = nombre ignorando mayusculas
+-exec = ejecutar comando sobre resultado
+
+
+Uso en ciberseguridad: 
+Muy util para localizar logs, scripts, sospechosos, archivos ocultos o evidencias
