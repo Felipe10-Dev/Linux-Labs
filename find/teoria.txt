@@ -1,3 +1,4 @@
+-> FIND <-
 
 ¿Que es?
 find es un comando de Linux que permite buscar archivos y directorios dentro del sistema de archivos
@@ -22,12 +23,21 @@ find . -name "*.log" -> busca archivos .log
 find . -iname "*.txt" -> busca ignorando mayusculas/minusculas
 
 Opciones importantes: 
+
+-> Fase 1 <-
  
 -type f = archivos 
 -type d = directorios
 -name = nombre exacto
 -iname = nombre ignorando mayusculas
 -exec = ejecutar comando sobre resultado
+
+-> Fase 2 <-
+
+-perm 777 = permisos exactos
+-perm 644 = permisos exactos
+-perm -400 = al menos esos permisos
+-perm /111 = cualquier permiso de ejecucion
 
 
 Uso en ciberseguridad: 
