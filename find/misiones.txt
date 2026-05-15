@@ -1,0 +1,170 @@
+Mision 1
+
+Encuentra todo el contenido del laboratorio desde el directorio actual.
+
+-> Archivos Y Directorios <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type d,f
+.
+./README.md
+./evidence
+./evidence/.secret_key
+./evidence/suspicious.txt
+./evidence/malware.exe
+./logs
+./logs/apache.log
+./logs/auth.log
+./logs/error.LOG
+./users
+./users/Admin.TXT
+./users/guest.txt
+./users/admin.txt
+./scripts
+./scripts/hidden.sh
+./scripts/backup.sh
+./scripts/scan.sh
+./temp
+./temp/old.log
+./temp/temp1.tmp
+
+
+
+Mision 2
+
+Lista únicamente los archivos del laboratorio.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f              
+./README.md
+./evidence/.secret_key
+./evidence/suspicious.txt
+./evidence/malware.exe
+./logs/apache.log
+./logs/auth.log
+./logs/error.LOG
+./users/Admin.TXT
+./users/guest.txt
+./users/admin.txt
+./scripts/hidden.sh
+./scripts/backup.sh
+./scripts/scan.sh
+./temp/old.log
+./temp/temp1.tmp
+
+
+
+Mision 3
+
+Lista únicamente los directorios del laboratorio.
+
+-> Directorios <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type d
+.
+./evidence
+./logs
+./users
+./scripts
+./temp
+
+
+
+Mision 4
+
+Encuentra todos los archivos con extensión .log.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f -name "*.log" 
+./logs/apache.log
+./logs/auth.log
+./temp/old.log
+
+
+
+Mision 5
+
+Encuentra todos los archivos con extensión .txt, sin importar mayúsculas o minúsculas.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f -iname "*.txt"           
+./evidence/suspicious.txt
+./users/Admin.TXT
+./users/guest.txt
+./users/admin.txt
+
+
+Mision 6
+
+Encuentra todos los archivos .sh dentro del laboratorio.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f -name "*.sh"  
+./scripts/hidden.sh
+./scripts/backup.sh
+./scripts/scan.sh
+
+
+
+Mision 7
+
+Localiza el archivo llamado exactamente README.md.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f -name "README.md"
+./README.md
+
+
+Mision 8
+
+Encuentra exactamente el archivo Admin.TXT.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f -name "Admin.TXT"
+./users/Admin.TXT
+
+
+Mision 9
+
+Busca todos los archivos dentro del directorio evidence/.
+
+-> Archivos <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find evidence/ -type f 
+evidence/.secret_key
+evidence/suspicious.txt
+evidence/malware.exe
+
+Mision 10
+
+Usa find para mostrar el contenido encontrado junto con información detallada usando ls -l.
+
+-> Archivos Y Directorios <-
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
+└─# find . -type f,d | ls -l
+total 24
+drwxrwxr-x 2 root root 4096 May 15 11:03 evidence
+drwxrwxr-x 2 root root 4096 May 15 10:59 logs
+-rw-rw-r-- 1 root root  113 May 15 11:17 README.md
+drwxrwxr-x 2 root root 4096 May 15 11:01 scripts
+drwxrwxr-x 2 root root 4096 May 15 11:09 temp
+drwxrwxr-x 2 root root 4096 May 15 11:08 users
+
+
+
+
