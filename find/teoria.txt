@@ -39,6 +39,20 @@ Opciones importantes:
 -perm -400 = al menos esos permisos
 -perm /111 = cualquier permiso de ejecucion
 
+-> Fase 3 <-
+
++ -> Mayor que
+- -> Menor que
+-> Sin signo exactamente ese tamano
+
+-size c = bytes
+-size K = kilobytes 
+-size M = Megabytes
+-size G = Gigabytes 
+
+
+
+
 
 Uso en ciberseguridad: 
 Muy util para localizar logs, scripts, sospechosos, archivos ocultos o evidencias
