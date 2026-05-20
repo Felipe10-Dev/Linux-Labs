@@ -50,6 +50,11 @@ Opciones importantes:
 -size M = Megabytes
 -size G = Gigabytes 
 
+-> Fase 4 <-
+
+- mtime -3 = Menos de 3 dias
++ mtime +3 = Mas de 3 dias
+mtime 3 = Exactamente 3 dias
 
 
 
