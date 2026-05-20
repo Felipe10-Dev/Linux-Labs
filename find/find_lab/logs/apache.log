@@ -1,0 +1,3 @@
+GET /index.html 200
+POST /login 403
+GET /admin 404
