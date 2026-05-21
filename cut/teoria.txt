@@ -1,10 +1,10 @@
 -> CUT <-
 
-Que es?
+¿Que es?
 cut es un comando de Linux que permite extraer partes especificas de un texto, ya sea por columnas, campos o caracteres
 
 
-Para que sirve?
+¿Para que sirve?
 - cortar columnas de un archivo 
 - extraer campos usando delimitadores 
 - seleccionar caracteres especificos
@@ -37,8 +37,6 @@ Opciones Importantes:
 
 
 -> Fase 3 <-
-
-
 
 Encadenamiento:
 cut puede combinarse con otros comandos usando pipes "|"
