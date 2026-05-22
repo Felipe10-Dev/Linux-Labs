@@ -1,0 +1,54 @@
+-> TR <-
+
+Que es?
+tr es un comando de Linux que permite traducir, remplazar, eliminar o comprimir caracteres dentro de un texto
+
+Para que sirve?
+- remplazar caracteres
+- convertir minusculas o mayusculas
+- eliminar caracteres
+- comprimir caracteres repetidos
+
+Sintaxis basica:
+tr [opciones] "caracter1" "caracter2"
+
+Ejemplos: 
+tr "." "-" -> remplaza puntos por guiones
+tr "a-z" "A-Z" -> convierte minusculas a mayusculas
+tr -d ":" -> elimina los dos puntos
+tr -s " " -> comprime multiples espacios en uno
+
+Opciones importantes:
+
+-> Fase 1 <-
+
+remplazo: 
+tr ":" "-"
+
+
+eliminacion:
+tr -d ":"
+
+
+compresion:
+tr -s " "
+
+
+-> Fase 2 <-
+
+conversion de texto: 
+tr "a-z" "A-Z"
+tr "A-Z" "a-z"
+
+
+-> Fase 3 <-
+
+Encadenamiento: 
+tr puede combinarse con pipes "|"
+
+Ejemplo:
+cut -d ":" -f 1,4 users.txt | tr ":" " "
+
+
+Uso en ciberseguridad: 
+Muy util para limpiar logs, cambiar delimitadores, normalizar texto y preparar informacion para otros comandos. 
