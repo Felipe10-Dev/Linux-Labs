@@ -1,0 +1,6 @@
+./.secret_attack.log
+./evidence/hidden.log
+./logs/firewall.log
+./logs/sys.log
+./logs/apache.log
+./logs/auth.log
