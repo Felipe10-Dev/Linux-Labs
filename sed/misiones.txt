@@ -1,0 +1,173 @@
+-> Mision 1 <-
+
+Usa sed para reemplazar la palabra:
+
+Success 
+
+solo en la primera coincidencia de cada línea del archivo:
+
+auth.log
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/logs]
+└─# sed 's/Failed/Success/' auth.log
+Success login
+Success service
+Success access
+
+
+
+-> Mision 2 <-
+
+Usa sed para reemplazar todas las apariciones de:
+
+Failed
+
+por: 
+
+ALERT
+
+en: 
+
+auth.log
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/logs]
+└─# sed 's/Failed/ALERT/g' auth.log
+ALERT login
+ALERT service
+ALERT access
+
+
+
+-> Mision 3 <-
+
+Usa sed para eliminar todas las líneas que contengan:
+
+failed
+
+del archivo: 
+
+services.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/services]
+└─# sed '/Failed/d' services.txt   
+Success
+Warning
+
+
+
+-> Mision 4 <-
+
+Usa sed para mostrar solo la línea 3 del archivo:
+
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/users]
+└─# sed -n '3p' users.txt       
+tres
+
+
+
+-> Mision 5 <-
+
+Usa sed para mostrar solo la línea 5 del archivo:
+
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/users]
+└─# sed -n '5p' users.txt
+cinco
+
+
+
+-> Mision 6 <-
+
+Usa sed para reemplazar:
+
+/bin/
+
+por: 
+
+/usr/bin/
+
+en: 
+
+paths.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/paths]
+└─# sed 's:/bin/:/usr/bin/:' paths.txt
+root:/usr/bin/bash
+kali:/usr/bin/zsh
+mysql:/usr/bin/false
+
+
+
+-> Mision 7 <-
+
+Usa sed para reemplazar:
+
+root 
+
+por: 
+
+admin
+
+en: 
+
+paths.txt
+
+
+-> Mision 8 <-
+
+Usa grep y sed juntos para cambiar:
+
+Failed
+
+por: 
+
+[ALERTA]
+
+solo en las líneas de:
+
+auth.log
+
+que contengan Failed.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/logs]
+└─# grep -i "Failed" auth.log | sed 's/Failed/[ALERTA]/'                    
+[ALERTA] login
+[ALERTA] service
+[ALERTA] access
+
+
+
+-> Mision 9 <-
+
+Usa sed para eliminar la línea 2 del archivo:
+
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/users]
+└─# sed '2d' users.txt 
+uno
+tres
+cuatro
+cinco
+
+
+
+-> Mision 10 <-
+
+Usa sed para mostrar solo las líneas que contengan:
+
+bin 
+
+en: 
+
+paths.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sed/sed_lab/paths]
+└─# sed -n '/bin/p' paths.txt
+root:/bin/bash
+kali:/bin/zsh
+mysql:/bin/false
+
