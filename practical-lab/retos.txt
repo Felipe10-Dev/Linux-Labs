@@ -835,6 +835,172 @@ PUT /shell.bak 500
 
 
 
+PIPELINES
+
+-> Reto 1 <-
+
+Busca Failed en auth.log, extrae la IP y guárdala en report1.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find auth.log -type f -exec grep -i "Failed" {} + | grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" > report1.txt
+
+
+
+-> Reto 2 <-
+
+Busca DENY en firewall.log, extrae IPs y reemplaza . por -.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find firewall.log -type f -exec grep -w "DENY" {} + | tr "." "-"                                              
+DENY 10-10-10-10
+DENY 172-16-0-8
+DENY 192-168-50-5
+DENY 45-33-32-156
+
+
+
+-> Reto 3 <-
+
+Busca todos los .log, encuentra error y guarda resultados en errors.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# cat errors.txt
+./logs/sys.log:error loading kernel module
+./logs/sys.log:error mounting device
+./logs/sys.log:critical error in service
+
+
+
+-> Reto 4 <-
+
+Busca usuarios con shell /bin/bash y extrae solo sus nombres.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find users -type f -exec grep -i "/bin/bash" {} + | cut -d ":" -f 2
+root
+admin
+analyst
+
+
+
+-> Reto 5 <-
+
+Busca 500 en apache.log, extrae la ruta y conviértela a mayúsculas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find apache.log -type f -exec grep "500" {} + | tr "a-z" "A-Z"
+POST /LOGIN.PHP 500
+PUT /SHELL.PHP 500
+
+
+
+-> Reto 6 <-
+
+Encuentra todos los scripts .sh y muestra solo sus nombres.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*.sh" | xargs basename -a
+suspicious.sh
+backup.sh
+scan.sh
+cleanup.sh
+
+
+
+-> Reto 7 <-
+
+Busca root en todos los archivos de users/ y guarda coincidencias.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# find . -type f -exec grep "root" {} + |  > coincidencias.txt
+
+
+
+-> Reto 8 <-
+
+Encuentra todos los .log, elimina líneas con Accepted y guarda copia limpia.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# cat copia.txt        
+Attack from 99.99.99.99
+Failed root login
+payload uploaded
+secret login from 66.66.66.66
+failed root access
+hidden process running
+ALLOW 192.168.1.1
+DENY 10.10.10.10
+DENY 172.16.0.8
+ALLOW 8.8.8.8
+DENY 192.168.50.5
+ALLOW 127.0.0.1
+DENY 45.33.32.156
+ALLOW 10.0.0.5
+system boot complete
+network interface up
+error loading kernel module
+user login success
+disk warning detected
+error mounting device
+backup completed
+critical error in service
+GET /index.html 200
+POST /login.php 500
+GET /admin.php 403
+POST /upload.php 200
+GET /dashboard.php 200
+POST /config.php 401
+DELETE /backup.zip 403
+PUT /shell.php 500
+Failed login from 192.168.1.10
+Failed login from 172.16.0.5
+User admin Failed login from 10.10.10.10
+FAILED login from 8.8.8.8
+failed login from 172.20.1.50
+
+
+
+-> Reto 9 <-
+
+Busca todas las IPs de auth.log, anonimízalas y guarda resultado.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+/[IPS]/' auth.log 
+Failed login from [IPS]
+Accepted login from [IPS]
+Failed login from [IPS]
+Accepted login from [IPS]
+User admin Failed login from [IPS]
+FAILED login from [IPS]
+failed login from [IPS]
+User root Accepted login from [IPS]
+
+
+
+-> Reto 10 <-
+
+Genera un reporte final llamado evidence/final_report.txt con información de auth.log, firewall.log y apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/auth.log > final_report.txt
+                                                                                                                                                                                                                                             
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/firewall.log >> final_report.txt 
+                                                                                                                                                                                                                                             
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/apache.log >> final_report.txt
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
