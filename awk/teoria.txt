@@ -1,10 +1,10 @@
 -> AWK <-
 
-Que es?
+¿Que es?
 awk es un comando de Linux que permite procesar y analizar texto por columnas o campos
 
 
-Para que sirve? 
+¿Para que sirve? 
 - extraer columnas
 - filtrar informacion
 - hacer comparaciones
