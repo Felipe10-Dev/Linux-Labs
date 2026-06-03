@@ -1,0 +1,44 @@
+Que es?
+sort es un comando de Linux que permite ordenar lineas de texto dentro de archivos o resultados de otros comandos
+
+Para que sirve? 
+- ordenar texto alfabeticamente
+- ordenar numeros
+- organizar resultados
+- preparar informacion para otros comandos como uniq
+
+Sintaxis basica
+sort [opciones] archivo
+
+Ejemplos: 
+sort nombres.txt -> ordena alfabeticamente
+sort -r nombres.txt -> orden inverso
+sort -n numeros.txt  -> orden numerico
+sort -u nombres.txt -> elimina duplicados mientras ordena
+
+Opciones importantes: 
+
+-> Fase 1 <-
+
+-r = orden inverso
+-n = orden numerico
+-u = eliminar duplicados
+
+-> Fase 2 <-
+
+-k = ordena por columnas
+
+Ejemplo: 
+sort -k 2 archivo.txt
+
+-> Fase 3 <-
+
+Encadenamiento: 
+sort puede combinarse con otros comandos usando pipe "|"
+
+Ejemplo: 
+grep "Failed" auth.log | sort
+
+Uso en ciberseguridad: 
+Muy util para organizar logs, ordenar IPs, identificar eventos repetidos y preparar informacion para analisis en entornos SOC
+ 
