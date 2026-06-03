@@ -1,8 +1,10 @@
-Que es?
+-> SORT <-
+
+¿Que es?
 sort es un comando de Linux que permite ordenar lineas de texto dentro de archivos o resultados de otros comandos
 
 
-Para que sirve? 
+¿Para que sirve? 
 - ordenar texto alfabeticamente
 - ordenar numeros
 - organizar resultados
