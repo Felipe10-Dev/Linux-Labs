@@ -1,8 +1,7 @@
-Mision 1
+-> Mision 1 <-
 
 Usa grep para mostrar todas las líneas que contengan la palabra:
-
--> Failed <- 
+Failed
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -i "Failed" auth.log
@@ -11,11 +10,11 @@ May 20 10:01:20 Failed login from 192.168.1.10 user root
 May 20 10:03:00 Failed login from 172.16.0.2 user guest
 
 
-Mision 2
+
+-> Mision 2 <-
 
 Usa grep para buscar la palabra:
-
--> admin <-
+admin
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
 └─# grep -i "admin" grep_lab/users/users.txt
@@ -24,54 +23,53 @@ Admin
 
 
 
-Mision 3
+-> Mision 3 <-
 
 Usa grep para buscar la palabra exacta:
-
--> root <-
+root
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
 └─# grep -w "root" grep_lab/users/users.txt  
 root
 
 
-Mision 4
+
+-> Mision 4 <-
 
 Usa grep para contar cuántas veces aparece: 
-
--> Failed <-
+Failed
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -c -i "Failed" auth.log            
 3
 
 
-Mision 5
+
+-> Mision 5 <-
 
 Usa grep para mostrar todas las líneas de:
-
--> !Failed <
+!Failed
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -i -v "Failed" auth.log 
 May 20 10:02:00 Success login from 10.0.0.5 user admin
 
 
-Mision 6
+
+-> Mision 6 <-
 
 Usa grep para mostrar las líneas que contengan:
-
--> Failed <-
+Failed
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -n -i "Failed" apache.log
 1:[error] Failed service restart for apache
 
 
-Mision 7
+
+-> Mision 7 <-
 
 Usa grep para mostrar solo las direcciones IP encontradas en:
-
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -i -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" auth.log            
@@ -81,12 +79,11 @@ May 20 10:02:00 Success login from 10.0.0.5 user admin
 May 20 10:03:00 Failed login from 172.16.0.2 user guest
 
 
-Mision 8
+
+-> Mision 8 <-
 
 Usa grep para buscar de forma recursiva la palabra:
-
--> Failed <-
-
+Failed
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/grep/grep_lab]
 └─# grep -r -i "Failed"                                 
@@ -99,11 +96,10 @@ backup/old_auth.log:Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
 backup/old_auth.log:Apr 20 09:05:10 Failed login from 192.168.100.50 user root
 
 
-Mision 9
+-> Mision 9 <-
 
 Usa grep para mostrar solo el nombre de los archivos dentro de:
-
--> Admin <-
+Admin
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
 └─# grep -r -i "admin" grep_lab                         
@@ -115,11 +111,10 @@ grep_lab/users/users.txt:admin
 grep_lab/users/users.txt:Admin
 
 
-Mision 10
+-> Mision 10 <-
 
 Usa grep para mostrar solo la primera coincidencia de la palabra:
-
--> Failed <-
+Failed
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
 └─# grep -r -i "Failed" 
