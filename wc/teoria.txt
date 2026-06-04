@@ -1,0 +1,65 @@
+-> WC <-
+
+¿Que es?
+wc (word count) es un comando de Linux que permite contar lineas, palabras, caracteres y bytes dentro de archivos o resultados de otros comandos.
+
+
+¿Para que sirve?
+
+- contar lineas de un archivo
+- contar palabras
+- contar caracteres
+- obtener estadisticas rapidas de logs
+
+
+Sintaxis basica:
+
+wc [opciones] archivo
+
+
+
+Ejemplos:
+
+wc archivo.txt
+wc -l archivo.txt
+wc -w archivo.txt
+wc -c archivo.txt
+
+
+Opciones importantes:
+
+-> Fase 1 <-
+
+-l = contar lineas
+
+-w = contar palabras
+
+-c = contar bytes
+
+-m = contar caracteres
+
+
+-> Fase 2 <-
+
+wc puede trabajar con pipes.
+
+Ejemplo:
+
+grep "Failed" auth.log | wc -l
+
+Cuenta cuantas lineas contienen Failed.
+
+
+-> Fase 3 <-
+
+Combinacion con otros comandos:
+
+sort ips.txt | uniq | wc -l
+
+Cuenta cuantas IPs unicas existen.
+
+
+
+Uso en ciberseguridad:
+
+Muy util para contar eventos, intentos de acceso, IPs unicas, usuarios y registros dentro de archivos de log en entornos SOC.
