@@ -1,8 +1,7 @@
-Mision 1
+-> Mision 1 <-
 
 Encuentra todo el contenido del laboratorio desde el directorio actual.
-
--> Archivos Y Directorios <-
+Archivos Y Directorios 
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type d,f
@@ -30,11 +29,10 @@ Encuentra todo el contenido del laboratorio desde el directorio actual.
 
 
 
-Mision 2
+-> Mision 2 <-
 
 Lista únicamente los archivos del laboratorio.
-
--> Archivos <-
+Archivos 
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f              
@@ -56,11 +54,10 @@ Lista únicamente los archivos del laboratorio.
 
 
 
-Mision 3
+-> Mision 3 <-
 
 Lista únicamente los directorios del laboratorio.
-
--> Directorios <-
+Directorios
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type d
@@ -73,11 +70,10 @@ Lista únicamente los directorios del laboratorio.
 
 
 
-Mision 4
+-> Mision 4 <-
 
 Encuentra todos los archivos con extensión .log.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f -name "*.log" 
@@ -87,11 +83,10 @@ Encuentra todos los archivos con extensión .log.
 
 
 
-Mision 5
+-> Mision 5 <- 
 
 Encuentra todos los archivos con extensión .txt, sin importar mayúsculas o minúsculas.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f -iname "*.txt"           
@@ -101,11 +96,11 @@ Encuentra todos los archivos con extensión .txt, sin importar mayúsculas o min
 ./users/admin.txt
 
 
-Mision 6
+
+-> Mision 6 <-
 
 Encuentra todos los archivos .sh dentro del laboratorio.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f -name "*.sh"  
@@ -115,33 +110,32 @@ Encuentra todos los archivos .sh dentro del laboratorio.
 
 
 
-Mision 7
+-> Mision 7 <-
 
 Localiza el archivo llamado exactamente README.md.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f -name "README.md"
 ./README.md
 
 
-Mision 8
+
+-> Mision 8 <-
 
 Encuentra exactamente el archivo Admin.TXT.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f -name "Admin.TXT"
 ./users/Admin.TXT
 
 
-Mision 9
+
+-> Mision 9 <-
 
 Busca todos los archivos dentro del directorio evidence/.
-
--> Archivos <-
+Archivos
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find evidence/ -type f 
@@ -149,11 +143,12 @@ evidence/.secret_key
 evidence/suspicious.txt
 evidence/malware.exe
 
-Mision 10
+
+
+-> Mision 10 <-
 
 Usa find para mostrar el contenido encontrado junto con información detallada usando ls -l.
-
--> Archivos Y Directorios <-
+Archivos Y Directorios
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
 └─# find . -type f,d | ls -l
