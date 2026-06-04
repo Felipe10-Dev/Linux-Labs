@@ -1,8 +1,7 @@
-Mision 1 
+-> Mision 1 <- 
 
 Usa cut para mostrar solo los nombres de usuario del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/users/users.txt -type f -exec cut -d ":" -f 1 {} \;
@@ -12,11 +11,10 @@ mysql
 
 
 
-Mision 2
+-> Mision 2 <-
 
 Usa cut para mostrar solo los UID (tercer campo) del archivo:
-
--> users.txt <-
+users.txt-
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/users/users.txt -type f -exec cut -d ":" -f 3 {} \;
@@ -26,11 +24,10 @@ Usa cut para mostrar solo los UID (tercer campo) del archivo:
 
 
 
-Mision 3
+-> Mision 3 <-
 
 Usa cut para mostrar solo las IPs del archivo:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/network/ips.txt -exec cut -d "-" -f 1 {} \; 
@@ -40,11 +37,10 @@ Usa cut para mostrar solo las IPs del archivo:
 
 
 
-Mision 4
+-> Mision 4 <-
 
 Usa cut para mostrar solo los usuarios del archivo:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/network/ips.txt -exec cut -d "-" -f 2 {} \;
@@ -54,11 +50,10 @@ guest
 
 
 
-Mision 5 
+-> Mision 5 <- 
 
 Usa cut para mostrar los primeros 5 caracteres del archivo:
-
--> alphabet.txt <-
+alphabet.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/text/alphabet.txt -exec cut -c 1-5 {} \;   
@@ -66,11 +61,10 @@ ABCDE
 
 
 
-Mision 6
+-> Mision 6 <-
 
 Usa cut para mostrar el primer y tercer campo del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/users/users.txt -exec cut -d ":" -f 1,3 {} \;      
@@ -80,22 +74,20 @@ mysql:110
 
 
 
-Mision 7
+-> Mision 7 <-
 
 Usa cut para mostrar los caracteres desde la posición:
-
--> alphabet.txt <-
+alphabet.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/text/alphabet.txt -exec cut -c 4-8 {} \;      
 DEFGH
 
 
-Mision 8 
+-> Mision 8 <- 
 
 Usa cut para mostrar desde el carácter:
-
--> alphabet.txt <-
+alphabet.txt
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/text/alphabet.txt -exec cut -c 6- {} \; 
@@ -103,11 +95,10 @@ FGHIJKLMN
 
 
 
-Mision 9
+-> Mision 9 <-
 
 Usa cut para extraer solo las IPs del archivo:
-
--> auth.log <-
+auth.log
 
 ┌──(root㉿kali)-[/home/kali/Linux-Labs/cut]
 └─# find cut_lab/logs/auth.log -type f -exec cut -d " " -f 7 {} \;
@@ -117,11 +108,10 @@ Usa cut para extraer solo las IPs del archivo:
 
 
 
-Mision 10
+-> Mision 10 <-
 
 Usa cut para mostrar el nombre de usuario y el shell del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/cut/cut_lab/users]
 └─# cut -d ":" -f 1,4 users.txt | cut -d "/" -f 1,3
