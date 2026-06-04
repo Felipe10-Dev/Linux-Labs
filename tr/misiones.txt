@@ -1,8 +1,7 @@
-Mision 1
+-> Mision 1 <-
 
 Usa tr para reemplazar todos los: . por: -
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/network]
 └─# cat ips.txt | tr "." "-"
@@ -12,11 +11,10 @@ Usa tr para reemplazar todos los: . por: -
 
 
 
-Mision 2
+-> Mision 2 <-
 
 Usa tr para convertir todo el contenido de:
-
--> status.txt <-
+status.txt
 
 a MAYUSCULAS.
 
@@ -28,12 +26,10 @@ WARNING
 
 
 
-
-Mision 3
+-> Mision 3 <-
 
 Usa tr para convertir todo el contenido de:
-
--> status.txt <-
+status.txt
 
 a minusculas. 
 
@@ -45,11 +41,10 @@ warning
 
 
 
-Mision 4
+-> Mision 4 <-
 
 Usa tr para eliminar todos los: - del archivo:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/network]
 └─# cat ips.txt | tr -d "-"        
@@ -59,11 +54,10 @@ Usa tr para eliminar todos los: - del archivo:
 
 
 
-Misiones 5
+-> Misiones 5 <-
 
 Usa tr para comprimir múltiples espacios en:
-
--> spaces.txt <-
+spaces.txt
 
 dejando solo un espacio entre palabras
 
@@ -73,11 +67,10 @@ admin root guest
 
 
 
-Mision 6
+-> Mision 6 <-
 
 Usa tr para eliminar todos los: : del archivo: 
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/users]
 └─# cat users.txt | tr -d ":"  
@@ -87,11 +80,10 @@ mysql/bin/false
 
 
 
-Mision 7
+-> Mision 7 <-
 
 Usa tr para reemplazar:  / por un espacio en: 
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/users]
 └─# cat users.txt | tr "/" " "            
@@ -101,7 +93,7 @@ mysql: bin false
 
 
 
-Mision 8
+-> Mision 8 <-
 
 Usa cut y tr juntos para mostrar:
 
@@ -110,8 +102,7 @@ kali zsh
 mysql false
 
 a partir de: 
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/users]
 └─# cut -d ":" -f 1,2 users.txt | cut -d "/" -f 1,3 | tr ":/" " " | tr -s " "
@@ -121,15 +112,14 @@ mysql false
 
 
 
-Mision 9
+-> Mision 9 <-
 
 Usa tr para eliminar todos los números:
 
 0-9
 
 del archivo: 
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/network]
 └─# cat ips.txt | tr -d "0-9"
@@ -139,11 +129,10 @@ del archivo:
 
 
 
-Mision 10
+-> Mision 10 <-
 
 Usa tr para reemplazar los puntos . por : en:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/tr/tr_lab/network]
 └─# cat ips.txt | tr "." ":" 
