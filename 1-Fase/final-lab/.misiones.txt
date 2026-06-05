@@ -1,0 +1,79 @@
+NIVEL 1 -> RECONOCIMIENTO
+
+-> Misión 1 <-
+Muestra todos los archivos del laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f | xargs basename -a
+old_auth.log
+connections.txt
+ips.txt
+malware.txt
+suspicious.txt
+.misiones.txt
+apache.log
+auth.log
+vpn.log
+passwd.txt
+admins.txt
+incidents.txt
+
+
+
+-> Misión 2 <-
+Muestra únicamente los archivos .log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -l "Failed" {} + | xargs basename -a
+old_auth.log
+suspicious.txt
+.misiones.txt
+auth.log
+vpn.log
+incidents.txt
+
+
+
+-> Misión 3 <-
+Cuenta cuántos archivos existen en todo el laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f | wc -l 
+12
+
+
+
+-> Misión 4 <-
+Busca todas las líneas que contengan la palabra:
+Failed
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -n -E "\bFailed\b" {} + 
+./backups/old_auth.log:1:Failed login from 192.168.1.10
+./backups/old_auth.log:2:Failed login from 192.168.1.10
+./evidence/suspicious.txt:2:Failed login detected
+./.misiones.txt:20:Failed
+./.misiones.txt:27:Failed
+./logs/auth.log:1:May 20 Failed login from 192.168.1.10 user admin
+./logs/auth.log:3:May 20 Failed login from 172.16.0.2 user guest
+./logs/auth.log:4:May 20 Failed login from 192.168.1.10 user admin
+./logs/auth.log:5:May 20 Failed login from 10.0.0.5 user root
+./logs/vpn.log:3:VPN connection failed from 172.16.0.2
+./reports/incidents.txt:1:INC001 Failed Login
+./reports/incidents.txt:4:INC004 Failed Login
+
+
+
+-> Misión 5 <-
+Cuenta cuántas líneas contienen:
+Failed
+en todo el laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i "Failed" {} + | wc -l 
+12
+
+
+
+NIVEL 2 -> USUARIOS
+
