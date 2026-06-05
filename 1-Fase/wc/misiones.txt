@@ -1,0 +1,120 @@
+-> Mision 1 <-
+
+Usa wc para mostrar todas las estadísticas del archivo:
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/users]
+└─# wc users.txt  
+ 5  5 28 users.txt
+
+
+
+-> Mision 2 <-
+
+Usa wc -l para contar cuántas líneas tiene:
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/users]
+└─# wc -l users.txt
+5 users.txt
+
+
+
+-> Mision 3 <-
+
+Usa wc -w para contar cuántas palabras contiene:
+auth.log
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/logs]
+└─# wc -w auth.log 
+20 auth.log
+
+
+
+-> Mision 4 <-
+
+Usa wc -c para contar cuántos bytes tiene:
+events.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/reports]
+└─# wc -c events.txt 
+60 events.txt
+
+
+
+-> Mision 5 <-
+
+Usa wc -m para contar cuántos caracteres tiene:
+events.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/reports]
+└─# wc -m events.txt
+60 events.txt
+
+
+
+-> Mision 6 <-
+
+Usa grep y wc para contar cuántas líneas contienen:
+Failed
+en:
+auth.log
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/logs]
+└─# grep -i "Failed" auth.log | wc -l 
+3
+
+
+
+-> Mision 7 <-
+
+Usa sort, uniq y wc para contar cuántas IPs únicas existen en:
+ips.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/network]
+└─# sort -n -u ips.txt | uniq -c | wc -l
+3
+
+
+
+-> Mision 8 <-
+
+Usa grep y wc para contar cuántos eventos:
+Success
+hay en:
+events.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/reports]
+└─# grep -i "Success" events.txt | wc -l  
+2
+
+
+
+-> Mision 9 <-
+
+Usa find y wc para contar cuántos archivos existen dentro de:
+wc_lab
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/wc/wc_lab]
+└─# find . -type f | wc -l         
+5
+
+
+
+-> Mision 10 <-
+
+Utiliza los comandos que ya conoces para responder:
+
+¿Cuántas IPs únicas aparecen en auth.log en eventos Failed?
+
+Pistas del reto:
+
+grep
+awk
+sort
+uniq
+wc
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/logs]
+└─# awk '$4' auth.log | grep -i "Failed" | sort -n -u | wc -l  
+1

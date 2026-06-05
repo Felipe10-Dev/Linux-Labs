@@ -1,0 +1,79 @@
+-> UNIQ <-
+
+¿Que es?
+uniq es un comando de Linux que permite eliminar o contar lineas repetidas dentro de un archivo o resultado.
+
+
+
+¿Para que sirve?
+
+- eliminar duplicados
+- contar ocurrencias
+- identificar eventos repetidos
+- analizar logs y registros
+
+
+
+Sintaxis basica:
+
+uniq [opciones] archivo
+
+
+
+Ejemplos:
+
+uniq archivo.txt
+uniq -c archivo.txt
+uniq -d archivo.txt
+sort archivo.txt | uniq
+
+
+
+Opciones importantes:
+
+
+-> Fase 1 <-
+
+-c = cuenta cuantas veces aparece cada linea
+
+-d = muestra solo lineas duplicadas
+
+-u = muestra solo lineas unicas
+
+
+-> Fase 2 <-
+
+uniq trabaja sobre lineas consecutivas.
+
+Ejemplo:
+
+admin
+admin
+root
+guest
+guest
+
+uniq
+
+Resultado:
+
+admin
+root
+guest
+
+
+-> Fase 3 <-
+
+Normalmente se combina con sort.
+
+Ejemplo:
+
+sort ips.txt | uniq
+
+sort ips.txt | uniq -c
+
+
+
+Uso en ciberseguridad:
+
+Muy util para identificar IPs repetidas, usuarios frecuentes, eventos duplicados y generar estadisticas basicas de logs en entornos SOC.

@@ -1,0 +1,177 @@
+-> Mision 1 <-
+
+Usa sort para ordenar alfabéticamente el archivo:
+
+users.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/users]
+└─# sort users.txt          
+admin
+guest
+kali
+mysql
+root
+
+
+
+-> Mision 2 <-
+
+Usa sort para ordenar alfabéticamente el archivo:
+
+users.txt
+
+pero en orden inverso.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/users]
+└─# sort -r users.txt       
+root
+mysql
+kali
+guest
+admin
+
+
+
+-> Mision 3 <-
+
+Usa sort para ordenar numéricamente el archivo:
+
+scores.txt
+
+de menor a mayor.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/numbers]
+└─# sort -n scores.txt      
+10
+25
+50
+75
+100
+
+
+
+-> Mision 4 <-
+
+Usa sort para ordenar numéricamente el archivo:
+
+scores.txt
+
+de mayor a menor.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/numbers]
+└─# sort -nr scores.txt
+100
+75
+50
+25
+10
+
+
+
+-> Mision 5 <-
+
+Usa sort para ordenar las direcciones IP del archivo:
+
+ips.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/logs]
+└─# sort -n ips.txt    
+10.0.0.5
+10.0.0.5
+172.16.0.2
+192.168.1.10
+192.168.1.10
+192.168.1.20
+
+
+
+-> Mision 6 <-
+
+Usa sort para ordenar y eliminar los duplicados del archivo:
+
+ips.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/logs]
+└─# sort -u ips.txt 
+10.0.0.5
+172.16.0.2
+192.168.1.10
+192.168.1.20
+
+
+
+-> Mision 7 <-
+
+Usa sort para ordenar el archivo:
+
+ventas.txt
+
+utilizando la segunda columna como criterio de orden.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/sales]
+└─# sort -n -k 2 ventas.txt 
+Luis 100
+Maria 150
+Carlos 250
+Juan 300
+Pedro 500
+
+
+
+-> Mision 8 <-
+
+Usa awk y sort juntos para mostrar únicamente los nombres de:
+
+ventas.txt
+
+ordenados alfabéticamente.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/sales]
+└─# awk '$1' ventas.txt | sort    
+Carlos 250
+Juan 300
+Luis 100
+Maria 150
+Pedro 500
+
+
+
+-> Mision 9 <-
+
+Usa awk y sort juntos para mostrar únicamente los valores numéricos de:
+
+ventas.txt
+
+ordenados de menor a mayor.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/sales]
+└─# awk '{print $2}' ventas.txt | sort -n 
+100
+150
+250
+300
+500
+
+
+
+-> Mision 10 <-
+
+Usa:
+
+sort
+
+y cualquier comando que ya conozcas para obtener una lista ordenada de las IPs presentes en:
+
+ips.txt
+
+sin repetir ninguna dirección.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/logs]
+└─# sort -r -u ips.txt
+192.168.1.20
+192.168.1.10
+172.16.0.2
+10.0.0.5
+
+
+

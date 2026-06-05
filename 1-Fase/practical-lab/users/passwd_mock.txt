@@ -1,0 +1,5 @@
+root:x:0:0:root:/root:/bin/bash
+admin:x:1001:1001:System Admin:/home/admin:/bin/bash
+guest:x:1002:1002:Guest User:/home/guest:/bin/false
+analyst:x:1003:1003:Security Analyst:/home/analyst:/bin/bash
+developer:x:1004:1004:Dev User:/home/dev:/bin/zsh

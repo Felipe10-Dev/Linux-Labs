@@ -1,0 +1,50 @@
+-> SED <-
+
+Que es?
+sed(Stream Editor) es un comando de Linux que permite buscar, reemplazar, eliminar y modificar texto dentro de un flujo o archivo.
+
+Para que sirve?
+- reemplazar palabras o patrones
+- eliminar lineas
+- mostrar lineas especificas
+- editar texto de forma automatica
+
+Sintaxis basica:
+sed 'operacion' archivo
+
+Ejemplos: 
+sed 's/Failed/Success/' archivo.txt -> reemplaza la primera coincidencia
+sed 's/Failed/Success/g' archivo.txt -> reemplaza todas las coincidencias
+sed '/Failed/d' -> archivo.txt -> elimina lineas que contengan Failed
+sed -n '3p' archivo.txt -> muestra solo la linea 3 
+
+Opciones importantes: 
+
+-> Fase 1 <-
+
+s = sustituir (replace)
+/g = global (todas las coincidencias)
+d = delete (eliminar lineas)
+p = print (mostrar)
+
+-> Fase 2 <-
+
+Delimitadores:
+Normalmente se usa "/"
+
+Ejemplo: 
+sed 's:/bin/:/usr/bin/:'
+
+Esto sirve cuando hay muchos "/"
+
+-> Fase 3 <-
+
+Encadenamiento: 
+sed puede combinarse con pipes "|"
+
+Ejemplo: 
+grep "Failed" auth.log | sed 's/Failed/ALERT/'
+
+
+Uso en ciberseguridad: 
+Muy util para limpiar logs, anomizar datos, reemplazar IPs, modificar rutas y automatizar cambios en archivo.  

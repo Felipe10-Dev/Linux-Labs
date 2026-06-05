@@ -1,0 +1,1043 @@
+FIND
+
+-> Reto 1 <-
+
+Encuentra todos los archivos dentro de practical-lab.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f            
+./.secret_attack.log
+./README.md
+./evidence/hidden.log
+./evidence/malware.exe
+./evidence/suspicious.sh
+./logs/firewall.log
+./logs/sys.log
+./logs/apache.log
+./logs/auth.log
+./users/admins.txt
+./users/users.txt
+./users/passwd_mock.txt
+./scripts/backup.sh
+./scripts/scan.sh
+./scripts/cleanup.sh
+./retos.txt
+
+
+
+-> Reto 2 <-
+
+Encuentra únicamente los directorios dentro de practical_lab.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type d                
+.
+./backups
+./evidence
+./logs
+./users
+./scripts
+
+
+
+-> Reto 3 <-
+
+Busca todos los archivos con extensión .log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*.log"
+./.secret_attack.log
+./evidence/hidden.log
+./logs/firewall.log
+./logs/sys.log
+./logs/apache.log
+./logs/auth.log
+
+
+
+-> Reto 4 <-
+
+Busca todos los scripts con extensión .sh.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*.sh"
+./evidence/suspicious.sh
+./scripts/backup.sh
+./scripts/scan.sh
+./scripts/cleanup.sh
+
+
+
+-> Reto 5 <-
+
+Encuentra todos los archivos cuyo nombre contenga la palabra hidden.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*hidden*"
+./evidence/hidden.log
+
+
+
+-> Reto 6 <-
+
+Encuentra todos los archivos con permisos exactos 777.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -perm 777       
+./scripts/scan.sh
+
+
+
+-> Reto 7 <-
+
+Encuentra todos los archivos que tengan algún permiso de ejecución.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -perm /111
+./scripts/backup.sh
+./scripts/scan.sh
+
+
+
+-> Reto 8 <-
+
+Busca archivos modificados hace menos de 3 días.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -mtime -3 
+./.secret_attack.log
+./README.md
+./evidence/hidden.log
+./evidence/malware.exe
+./evidence/suspicious.sh
+./logs/firewall.log
+./logs/sys.log
+./logs/apache.log
+./logs/auth.log
+./users/admins.txt
+./users/users.txt
+./users/passwd_mock.txt
+./scripts/backup.sh
+./scripts/scan.sh
+./scripts/cleanup.sh
+./retos.txt
+
+
+
+-> Reto 9 <-
+
+Encuentra todos los archivos mayores a 100 KB.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -size +1k
+./retos.txt
+
+
+
+-> Reto 10 <-
+
+Busca todos los archivos .log y copia sus rutas dentro de evidence/log_report.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*.log" > evidence/log_report.txt  
+
+
+
+
+
+GREP
+
+-> Reto 1 <-
+
+Busca todas las líneas que contengan Failed en auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# grep -i "Failed" auth.log                                                 
+Failed login from 192.168.1.10
+Failed login from 172.16.0.5
+User admin Failed login from 10.10.10.10
+FAILED login from 8.8.8.8
+failed login from 172.20.1.50
+
+
+
+-> Reto 2 <-
+
+Cuenta cuántas veces aparece Accepted en auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# grep -i -c "Accepted" auth.log                                     
+3
+
+
+
+-> Reto 3 <-
+
+Busca failed ignorando mayúsculas y minúsculas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# grep -i -r "failed"    
+.secret_attack.log:Failed root login
+evidence/hidden.log:failed root access
+logs/auth.log:Failed login from 192.168.1.10
+logs/auth.log:Failed login from 172.16.0.5
+logs/auth.log:User admin Failed login from 10.10.10.10
+logs/auth.log:FAILED login from 8.8.8.8
+logs/auth.log:failed login from 172.20.1.50
+retos.txt:Busca todas las líneas que contengan Failed en auth.log.
+retos.txt:└─# grep -i "Failed" auth.log                                                 
+retos.txt:Failed login from 192.168.1.10
+retos.txt:Failed login from 172.16.0.5
+retos.txt:User admin Failed login from 10.10.10.10
+retos.txt:FAILED login from 8.8.8.8
+retos.txt:failed login from 172.20.1.50
+retos.txt:Busca failed ignorando mayúsculas y minúsculas.
+
+
+
+-> Reto 4 <-
+
+Muestra el número de línea donde aparece admin.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# grep -i -r -n "admin"
+logs/apache.log:3:GET /admin.php 403
+logs/auth.log:5:User admin Failed login from 10.10.10.10
+users/admins.txt:2:admin
+users/users.txt:2:admin:x:1001:1001
+users/passwd_mock.txt:2:admin:x:1001:1001:System Admin:/home/admin:/bin/bash
+retos.txt:18:./users/admins.txt
+retos.txt:117:./users/admins.txt
+retos.txt:158:User admin Failed login from 10.10.10.10
+retos.txt:184:logs/auth.log:User admin Failed login from 10.10.10.10
+retos.txt:191:retos.txt:User admin Failed login from 10.10.10.10
+retos.txt:200:Muestra el número de línea donde aparece admin.
+
+
+
+-> Reto 5 <-
+
+Muestra las líneas que NO contienen Accepted.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# grep -i -r -v "Accepted"          
+.secret_attack.log:Attack from 99.99.99.99
+.secret_attack.log:Failed root login
+.secret_attack.log:payload uploaded
+evidence/log_report.txt:./.secret_attack.log
+evidence/log_report.txt:./evidence/hidden.log
+evidence/log_report.txt:./logs/firewall.log
+evidence/log_report.txt:./logs/sys.log
+evidence/log_report.txt:./logs/apache.log
+evidence/log_report.txt:./logs/auth.log
+evidence/hidden.log:secret login from 66.66.66.66
+evidence/hidden.log:failed root access
+evidence/hidden.log:hidden process running
+evidence/malware.exe:MALWARE_SIGNATURE_XYZ
+evidence/malware.exe:trojan detected
+evidence/malware.exe:suspicious binary
+evidence/malware.exe:payload active
+evidence/suspicious.sh:#!/bin/bash
+evidence/suspicious.sh:nc -lvnp 4444
+evidence/suspicious.sh:echo "reverse shell ready"
+logs/firewall.log:ALLOW 192.168.1.1
+logs/firewall.log:DENY 10.10.10.10
+logs/firewall.log:DENY 172.16.0.8
+logs/firewall.log:ALLOW 8.8.8.8
+logs/firewall.log:DENY 192.168.50.5
+logs/firewall.log:ALLOW 127.0.0.1
+logs/firewall.log:DENY 45.33.32.156
+logs/firewall.log:ALLOW 10.0.0.5
+logs/sys.log:system boot complete
+logs/sys.log:network interface up
+logs/sys.log:error loading kernel module
+logs/sys.log:user login success
+logs/sys.log:disk warning detected
+logs/sys.log:error mounting device
+logs/sys.log:backup completed
+logs/sys.log:critical error in service
+logs/apache.log:GET /index.html 200
+logs/apache.log:POST /login.php 500
+logs/apache.log:GET /admin.php 403
+logs/apache.log:POST /upload.php 200
+logs/apache.log:GET /dashboard.php 200
+logs/apache.log:POST /config.php 401
+logs/apache.log:DELETE /backup.zip 403
+logs/apache.log:PUT /shell.php 500
+logs/auth.log:Failed login from 192.168.1.10
+logs/auth.log:Failed login from 172.16.0.5
+logs/auth.log:User admin Failed login from 10.10.10.10
+logs/auth.log:FAILED login from 8.8.8.8
+logs/auth.log:failed login from 172.20.1.50
+users/admins.txt:root
+users/admins.txt:admin
+users/admins.txt:analyst
+users/admins.txt:security
+users/users.txt:root:x:0:0
+users/users.txt:admin:x:1001:1001
+users/users.txt:guest:x:1002:1002
+users/users.txt:analyst:x:1003:1003
+users/users.txt:developer:x:1004:1004
+users/users.txt:security:x:1005:1005
+users/passwd_mock.txt:root:x:0:0:root:/root:/bin/bash
+users/passwd_mock.txt:admin:x:1001:1001:System Admin:/home/admin:/bin/bash
+users/passwd_mock.txt:guest:x:1002:1002:Guest User:/home/guest:/bin/false
+users/passwd_mock.txt:analyst:x:1003:1003:Security Analyst:/home/analyst:/bin/bash
+users/passwd_mock.txt:developer:x:1004:1004:Dev User:/home/dev:/bin/zsh
+scripts/backup.sh:#!/bin/bash
+scripts/backup.sh:tar -czf backup.tar.gz /home/kali/cyber_lab
+scripts/backup.sh:echo "Backup completed"
+scripts/scan.sh:#!/bin/bash
+scripts/scan.sh:echo "Scanning network..."
+scripts/scan.sh:nmap 192.168.1.0/24
+scripts/scan.sh:echo "Scan finished"
+scripts/cleanup.sh:#!/bin/bash
+scripts/cleanup.sh:echo "Cleaning logs..."
+scripts/cleanup.sh:rm *.tmp
+scripts/cleanup.sh:echo "Done"
+
+
+
+-> Reto 6 <-
+
+Busca todas las IPs en auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" auth.log              
+192.168.1.10
+10.0.0.2
+172.16.0.5
+192.168.0.1
+10.10.10.10
+8.8.8.8
+172.20.1.50
+127.0.0.1
+
+
+
+-> Reto 7 <-
+
+Busca todos los códigos 500 en apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# grep -i -E "500" apache.log 
+POST /login.php 500
+PUT /shell.php 500
+
+
+
+-> Reto 8 <-
+
+Busca la palabra exacta root en users.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# grep -i -w "root" users.txt
+root:x:0:0
+
+
+
+-> Reto 9 <-
+
+Busca recursivamente la palabra error dentro de logs/.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# grep -i -r -E "\berror\b" logs 
+logs/sys.log:error loading kernel module
+logs/sys.log:error mounting device
+logs/sys.log:critical error in service
+
+
+
+-> Reto 10 <-
+
+Muestra solo el nombre de los archivos donde aparece DENY.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# grep -i -r -l -E "\bDENY\b"   
+logs/firewall.log
+
+
+
+
+
+CUT
+
+-> Reto 1 <-
+
+Extrae únicamente los nombres de usuario de users.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cut -d ":" -f 1 users.txt                                   
+root
+admin
+guest
+analyst
+developer
+security
+
+
+
+-> Reto 2 <-
+
+Extrae únicamente los UID de users.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cut -d ":" -f 3 users.txt     
+0
+1001
+1002
+1003
+1004
+1005
+
+
+
+-> Reto 3 <-
+
+Extrae usuario y UID de users.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cut -d ":" -f 1,3 users.txt                                
+root:0
+admin:1001
+guest:1002
+analyst:1003
+developer:1004
+security:1005
+
+
+
+-> Reto 4 <-
+
+Extrae el shell de cada usuario en passwd_mock.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cut -d ":" -f 7 passwd_mock.txt
+/bin/bash
+/bin/bash
+/bin/false
+/bin/bash
+/bin/zsh
+
+
+
+-> Reto 5 <-
+
+Extrae solo las IPs de auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# rev auth.log | cut -d " " -f 1 | rev
+192.168.1.10
+10.0.0.2
+172.16.0.5
+192.168.0.1
+10.10.10.10
+8.8.8.8
+172.20.1.50
+127.0.0.1
+
+
+
+-> Reto 6 <-
+
+Extrae el método HTTP de apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cut -d " " -f 1 apache.log                                  
+GET
+POST
+GET
+POST
+GET
+POST
+DELETE
+PUT
+
+
+
+-> Reto 7 <-
+
+Extrae las rutas accedidas en apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cut -d " " -f 2 apache.log
+/index.html
+/login.php
+/admin.php
+/upload.php
+/dashboard.php
+/config.php
+/backup.zip
+/shell.php
+
+
+
+-> Reto 8 <-
+
+Extrae los códigos de estado HTTP de apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cut -d " " -f 3 apache.log
+200
+500
+403
+200
+200
+401
+403
+500
+
+
+
+-> Reto 9 <-
+
+Extrae solo la acción (ALLOW o DENY) de firewall.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cut -d " " -f 1 firewall.log
+ALLOW
+DENY
+DENY
+ALLOW
+DENY
+ALLOW
+DENY
+ALLOW
+
+
+
+-> Reto 10 <-
+
+Extrae los primeros 10 caracteres de cada línea de sys.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cut -c -10 sys.log                                          
+system boo
+network in
+error load
+user login
+disk warni
+error moun
+backup com
+critical e
+
+
+
+
+
+TR 
+
+-> Reto 1 <-
+
+Convierte users.txt a mayúsculas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cat users.txt | tr 'a-z' "A-Z"
+ROOT:X:0:0
+ADMIN:X:1001:1001
+GUEST:X:1002:1002
+ANALYST:X:1003:1003
+DEVELOPER:X:1004:1004
+SECURITY:X:1005:1005
+
+
+
+-> Reto 2 <-
+
+Convierte admins.txt a minúsculas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cat admins.txt | tr "A-Z" "a-z"
+root
+admin
+analyst
+security
+
+
+
+-> Reto 3 <-
+
+Reemplaza todos los : por espacios en users.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cat users.txt | tr ":" " "        
+root x 0 0
+admin x 1001 1001
+guest x 1002 1002
+analyst x 1003 1003
+developer x 1004 1004
+security x 1005 1005
+
+
+
+-> Reto 4 <-
+
+Elimina todos los / de passwd_mock.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cat passwd_mock.txt | tr -d "/"   
+root:x:0:0:root:root:binbash
+admin:x:1001:1001:System Admin:homeadmin:binbash
+guest:x:1002:1002:Guest User:homeguest:binfalse
+analyst:x:1003:1003:Security Analyst:homeanalyst:binbash
+developer:x:1004:1004:Dev User:homedev:binzsh
+
+
+
+-> Reto 5 <- 
+
+Cambia todos los puntos . por guiones - en auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cat auth.log | tr "." "-"
+Failed login from 192-168-1-10
+Accepted login from 10-0-0-2
+Failed login from 172-16-0-5
+Accepted login from 192-168-0-1
+User admin Failed login from 10-10-10-10
+FAILED login from 8-8-8-8
+failed login from 172-20-1-50
+User root Accepted login from 127-0-0-1
+
+
+
+-> Reto 6 <-
+
+Comprime múltiples espacios en sys.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cat sys.log | tr -s " "
+system boot complete
+network interface up
+error loading kernel module
+user login success
+disk warning detected
+error mounting device
+backup completed
+critical error in service
+
+
+
+-> Reto 7 <-
+
+Elimina todos los números de auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cat auth.log | tr -d "0-9" 
+Failed login from ...
+Accepted login from ...
+Failed login from ...
+Accepted login from ...
+User admin Failed login from ...
+FAILED login from ...
+failed login from ...
+User root Accepted login from ...
+
+
+
+-> Reto 8 <-
+
+Elimina todas las letras de firewall.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cat firewall.log | tr -d "A-Z "
+192.168.1.1
+10.10.10.10
+172.16.0.8
+8.8.8.8
+192.168.50.5
+127.0.0.1
+45.33.32.156
+10.0.0.5
+
+
+
+-> Reto 9 <-
+
+Convierte las IPs de auth.log para que usen _ en vez de ..
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# cat auth.log | tr "." "_"     
+Failed login from 192_168_1_10
+Accepted login from 10_0_0_2
+Failed login from 172_16_0_5
+Accepted login from 192_168_0_1
+User admin Failed login from 10_10_10_10
+FAILED login from 8_8_8_8
+failed login from 172_20_1_50
+User root Accepted login from 127_0_0_1
+
+
+
+-> Reto 10 <-
+
+Normaliza passwd_mock.txt para que sea más legible.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# cat passwd_mock.txt | tr ":" "-"     
+root-x-0-0-root-/root-/bin/bash
+admin-x-1001-1001-System Admin-/home/admin-/bin/bash
+guest-x-1002-1002-Guest User-/home/guest-/bin/false
+analyst-x-1003-1003-Security Analyst-/home/analyst-/bin/bash
+developer-x-1004-1004-Dev User-/home/dev-/bin/zsh
+
+
+
+
+
+SED
+
+-> Reto 1 <-
+
+Reemplaza Failed por ALERT en auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/Failed/ALERT/I' auth.log
+ALERT login from 192.168.1.10
+Accepted login from 10.0.0.2
+ALERT login from 172.16.0.5
+Accepted login from 192.168.0.1
+User admin ALERT login from 10.10.10.10
+ALERT login from 8.8.8.8
+ALERT login from 172.20.1.50
+User root Accepted login from 127.0.0.1
+
+
+
+-> Reto 2 <-
+
+Reemplaza todas las ocurrencias de login por ACCESS.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed  's/login/ACCESS/g' auth.log
+Failed ACCESS from 192.168.1.10
+Accepted ACCESS from 10.0.0.2
+Failed ACCESS from 172.16.0.5
+Accepted ACCESS from 192.168.0.1
+User admin Failed ACCESS from 10.10.10.10
+FAILED ACCESS from 8.8.8.8
+failed ACCESS from 172.20.1.50
+User root Accepted ACCESS from 127.0.0.1
+
+
+
+-> Reto 3 <-
+
+Elimina todas las líneas que contengan Accepted.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed '/Accepted/d' auth.log
+Failed login from 192.168.1.10
+Failed login from 172.16.0.5
+User admin Failed login from 10.10.10.10
+FAILED login from 8.8.8.8
+failed login from 172.20.1.50
+
+
+
+-> Reto 4 <-
+
+Muestra únicamente la línea 4 de auth.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed -n '4p' auth.log      
+Accepted login from 192.168.0.1
+
+
+
+-> Reto 5 <-
+
+Muestra únicamente las líneas que contienen DENY.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed -n  '/DENY/p' firewall.log
+DENY 10.10.10.10
+DENY 172.16.0.8
+DENY 192.168.50.5
+DENY 45.33.32.156
+
+
+
+-> Reto 6 <-
+
+Cambia ALLOW por PERMIT.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/ALLOW/PERMIT/g' firewall.log
+PERMIT 192.168.1.1
+DENY 10.10.10.10
+DENY 172.16.0.8
+PERMIT 8.8.8.8
+DENY 192.168.50.5
+PERMIT 127.0.0.1
+DENY 45.33.32.156
+PERMIT 10.0.0.5
+
+
+
+-> Reto 7 <-
+
+Anonimiza la IP 192.168.1.10.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/192.168.1.10/[REDACTED]/' auth.log 
+Failed login from [REDACTED]
+Accepted login from 10.0.0.2
+Failed login from 172.16.0.5
+Accepted login from 192.168.0.1
+User admin Failed login from 10.10.10.10
+FAILED login from 8.8.8.8
+failed login from 172.20.1.50
+User root Accepted login from 127.0.0.1
+
+
+
+-> Reto 8 <-
+
+Reemplaza /bin/bash por /bin/zsh en passwd_mock.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# sed 's:/bin/bash:\/bin/zsh:' passwd_mock.txt
+root:x:0:0:root:/root:/bin/zsh
+admin:x:1001:1001:System Admin:/home/admin:/bin/zsh
+guest:x:1002:1002:Guest User:/home/guest:/bin/false
+analyst:x:1003:1003:Security Analyst:/home/analyst:/bin/zsh
+developer:x:1004:1004:Dev User:/home/dev:/bin/zsh
+
+
+
+-> Reto 9 <-
+
+Elimina todas las líneas vacías de un archivo que tú crees.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/backups]
+└─# sed 's/ //g' espacios.txt
+AndresFelipeJimenezHernandez
+
+
+
+-> Reto 10 <-
+
+Cambia todas las extensiones .php por .bak en apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/.php/.bak/' apache.log
+GET /index.html 200
+POST /login.bak 500
+GET /admin.bak 403
+POST /upload.bak 200
+GET /dashboard.bak 200
+POST /config.bak 401
+DELETE /backup.zip 403
+PUT /shell.bak 500
+
+
+
+
+
+PIPELINES
+
+-> Reto 1 <-
+
+Busca Failed en auth.log, extrae la IP y guárdala en report1.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find auth.log -type f -exec grep -i "Failed" {} + | grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" > report1.txt
+
+
+
+-> Reto 2 <-
+
+Busca DENY en firewall.log, extrae IPs y reemplaza . por -.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find firewall.log -type f -exec grep -w "DENY" {} + | tr "." "-"                                              
+DENY 10-10-10-10
+DENY 172-16-0-8
+DENY 192-168-50-5
+DENY 45-33-32-156
+
+
+
+-> Reto 3 <-
+
+Busca todos los .log, encuentra error y guarda resultados en errors.txt.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# cat errors.txt
+./logs/sys.log:error loading kernel module
+./logs/sys.log:error mounting device
+./logs/sys.log:critical error in service
+
+
+
+-> Reto 4 <-
+
+Busca usuarios con shell /bin/bash y extrae solo sus nombres.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find users -type f -exec grep -i "/bin/bash" {} + | cut -d ":" -f 2
+root
+admin
+analyst
+
+
+
+-> Reto 5 <-
+
+Busca 500 en apache.log, extrae la ruta y conviértela a mayúsculas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# find apache.log -type f -exec grep "500" {} + | tr "a-z" "A-Z"
+POST /LOGIN.PHP 500
+PUT /SHELL.PHP 500
+
+
+
+-> Reto 6 <-
+
+Encuentra todos los scripts .sh y muestra solo sus nombres.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# find . -type f -name "*.sh" | xargs basename -a
+suspicious.sh
+backup.sh
+scan.sh
+cleanup.sh
+
+
+
+-> Reto 7 <-
+
+Busca root en todos los archivos de users/ y guarda coincidencias.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/users]
+└─# find . -type f -exec grep "root" {} + |  > coincidencias.txt
+
+
+
+-> Reto 8 <-
+
+Encuentra todos los .log, elimina líneas con Accepted y guarda copia limpia.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab]
+└─# cat copia.txt        
+Attack from 99.99.99.99
+Failed root login
+payload uploaded
+secret login from 66.66.66.66
+failed root access
+hidden process running
+ALLOW 192.168.1.1
+DENY 10.10.10.10
+DENY 172.16.0.8
+ALLOW 8.8.8.8
+DENY 192.168.50.5
+ALLOW 127.0.0.1
+DENY 45.33.32.156
+ALLOW 10.0.0.5
+system boot complete
+network interface up
+error loading kernel module
+user login success
+disk warning detected
+error mounting device
+backup completed
+critical error in service
+GET /index.html 200
+POST /login.php 500
+GET /admin.php 403
+POST /upload.php 200
+GET /dashboard.php 200
+POST /config.php 401
+DELETE /backup.zip 403
+PUT /shell.php 500
+Failed login from 192.168.1.10
+Failed login from 172.16.0.5
+User admin Failed login from 10.10.10.10
+FAILED login from 8.8.8.8
+failed login from 172.20.1.50
+
+
+
+-> Reto 9 <-
+
+Busca todas las IPs de auth.log, anonimízalas y guarda resultado.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/logs]
+└─# sed 's/[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+/[IPS]/' auth.log 
+Failed login from [IPS]
+Accepted login from [IPS]
+Failed login from [IPS]
+Accepted login from [IPS]
+User admin Failed login from [IPS]
+FAILED login from [IPS]
+failed login from [IPS]
+User root Accepted login from [IPS]
+
+
+
+-> Reto 10 <-
+
+Genera un reporte final llamado evidence/final_report.txt con información de auth.log, firewall.log y apache.log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/auth.log > final_report.txt
+                                                                                                                                                                                                                                             
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/firewall.log >> final_report.txt 
+                                                                                                                                                                                                                                             
+┌──(root㉿kali)-[/home/kali/Linux-Labs/practical-lab/evidence]
+└─# cat ../logs/apache.log >> final_report.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

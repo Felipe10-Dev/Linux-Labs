@@ -1,0 +1,3 @@
+Potential malware detected
+Failed login detected
+Suspicious IP detected
