@@ -1,4 +1,0 @@
-root:x:0:/bin/bash
-kali:x:1000:/bin/zsh
-mysql:x:110:/bin/false
-admin:x:1001:/bin/bash

@@ -1,8 +1,0 @@
-GET /index.html 200
-POST /login.php 500
-GET /admin.php 403
-POST /upload.php 200
-GET /dashboard.php 200
-POST /config.php 401
-DELETE /backup.zip 403
-PUT /shell.php 500

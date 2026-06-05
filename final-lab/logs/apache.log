@@ -1,5 +1,0 @@
-GET /index.html 200
-GET /login.php 404
-POST /admin.php 500
-GET /dashboard.php 200
-POST /admin.php 500

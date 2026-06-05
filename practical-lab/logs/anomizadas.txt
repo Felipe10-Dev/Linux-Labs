@@ -1,8 +1,0 @@
-Failed login from [IPS]
-Accepted login from [IPS]
-Failed login from [IPS]
-Accepted login from [IPS]
-User admin Failed login from [IPS]
-FAILED login from [IPS]
-failed login from [IPS]
-User root Accepted login from [IPS]

@@ -1,3 +1,0 @@
-./logs/sys.log:error loading kernel module
-./logs/sys.log:error mounting device
-./logs/sys.log:critical error in service

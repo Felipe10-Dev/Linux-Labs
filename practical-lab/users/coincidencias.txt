@@ -1,3 +1,0 @@
-./admins.txt:root
-./users.txt:root:x:0:0
-./passwd_mock.txt:root:x:0:0:root:/root:/bin/bash

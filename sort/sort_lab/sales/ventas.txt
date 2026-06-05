@@ -1,5 +1,0 @@
-Juan 300
-Maria 150
-Pedro 500
-Luis 100
-Carlos 250

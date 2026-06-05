@@ -1,5 +1,0 @@
-root
-admin
-guest
-mysql
-kali

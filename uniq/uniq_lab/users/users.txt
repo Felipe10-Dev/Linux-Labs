@@ -1,8 +1,0 @@
-admin
-admin
-root
-root
-guest
-guest
-guest
-mysql

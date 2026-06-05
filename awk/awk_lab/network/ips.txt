@@ -1,4 +1,0 @@
-192.168.1.10 Failed
-10.0.0.5 Success
-172.16.0.2 Failed
-192.168.1.20 Success
