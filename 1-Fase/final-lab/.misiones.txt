@@ -77,3 +77,146 @@ en todo el laboratorio.
 
 NIVEL 2 -> USUARIOS
 
+-> Misión 6 <-
+Muestra únicamente los nombres de usuario de:
+passwd.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 1 passwd.txt                                  
+root
+kali
+mysql
+admin
+
+
+
+-> Misión 7 <-
+Muestra únicamente los UID de:
+passwd.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 3 passwd.txt
+0
+1000
+110
+1001
+
+
+
+-> Misión 8 <-
+Muestra únicamente los usuarios que tienen:
+/bin/bash
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# grep -i "/bin/bash" passwd.txt | cut -d ":" -f 1
+root
+admin
+
+
+
+-> Misión 9 <-
+Cuenta cuántos usuarios existen en:
+passwd.txt
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 1 passwd.txt | wc -l              
+4
+
+
+
+-> Misión 10 <-
+Muestra usuario y shell en formato:
+usuario -> shell
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 1,4 passwd.txt | sed 's/:/ -> /g' 
+root -> /bin/bash
+kali -> /bin/zsh
+mysql -> /bin/false
+admin -> /bin/bash
+
+
+
+NIVEL 3 -> LOGS
+
+-> Misión 11 <-
+Muestra únicamente las líneas Failed de:
+auth.log
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$3 == "Failed"' auth.log               
+May 20 Failed login from 192.168.1.10 user admin
+May 20 Failed login from 172.16.0.2 user guest
+May 20 Failed login from 192.168.1.10 user admin
+May 20 Failed login from 10.0.0.5 user root
+
+
+
+-> Misión 12 <-
+Extrae únicamente las IPs de los eventos Failed.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# find . -type f -exec awk 'tolower($3) == "failed"' {} + | grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+"
+192.168.1.10
+172.16.0.2
+192.168.1.10
+10.0.0.5
+172.16.0.2
+
+
+
+-> Misión 13 <-
+Cuenta cuántos eventos Failed existen.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# find . -type f -exec awk 'tolower($3) == "failed"' {} + | wc -l  
+5
+
+
+
+-> Misión 14 <-
+Cuenta cuántas IPs únicas aparecen en eventos Failed.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# find . -type f -exec awk 'tolower($3) == "failed"' {} + | grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort -nr| uniq -u
+10.0.0.5
+
+
+
+-> Misión 15 <-
+Obtén la IP que más veces aparece en eventos Failed.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# find . -type f -exec awk 'tolower($3) == "failed"' {} + | grep -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort -nr| uniq -c | head -1
+2 192.168.1.10
+
+
+
+NIVEL 4 -> VPN
+
+-> Misión 16 <-
+Muestra todas las conexiones VPN exitosas.
+
+
+
+-> Misión 17 <-
+Muestra únicamente las IPs del archivo:
+vpn.log
+
+
+
+-> Misión 18 <-
+Cuenta cuántas conexiones VPN exitosas existen.
+
+
+
+-> Misión 19 <-
+Cuenta cuántas IPs únicas aparecen en:
+vpn.log
+
+
+
+-> Misión 20 <-
+Determina qué IP aparece más veces.
+
+
