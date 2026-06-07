@@ -197,16 +197,35 @@ NIVEL 4 -> VPN
 -> Misión 16 <-
 Muestra todas las conexiones VPN exitosas.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$3 == "established"' vpn.log                       
+VPN connection established from 192.168.1.10
+VPN connection established from 10.0.0.5
+VPN connection established from 192.168.1.10
+
 
 
 -> Misión 17 <-
 Muestra únicamente las IPs del archivo:
 vpn.log
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '{print $NF}' vpn.log        
+192.168.1.10
+10.0.0.5
+172.16.0.2
+192.168.1.10
+
 
 
 -> Misión 18 <-
 Cuenta cuántas conexiones VPN exitosas existen.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$3 == "established" {print $5}' vpn.log 
+192.168.1.10
+10.0.0.5
+192.168.1.10
 
 
 
@@ -214,9 +233,76 @@ Cuenta cuántas conexiones VPN exitosas existen.
 Cuenta cuántas IPs únicas aparecen en:
 vpn.log
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '{print $NF}' vpn.log | sort | uniq -u  
+10.0.0.5
+172.16.0.2
+
 
 
 -> Misión 20 <-
 Determina qué IP aparece más veces.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '{print $NF}' vpn.log | sort | uniq -c | sort -nr | head -1
+      2 192.168.1.10
+
+
+
+NIVEL 5 -> APACHE 
+
+-> Misión 21 <-
+Muestra únicamente las peticiones:
+POST
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$1 == "POST"' apache.log                                  
+POST /admin.php 500
+POST /admin.php 500
+
+
+
+-> Misión 22 <-
+Cuenta cuántos errores:
+500
+existen.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$NF == "500"' apache.log | wc -l
+2
+
+
+
+-> Misión 23 <-
+Muestra únicamente las rutas solicitadas.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cut -d " " -f 2 apache.log                                  
+/index.html
+/login.php
+/admin.php
+/dashboard.php
+/admin.php
+
+
+
+-> Misión 24 <-
+Obtén una lista ordenada y sin duplicados de las rutas.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cut -d " " -f 2 apache.log | sort | uniq   
+/admin.php
+/dashboard.php
+/index.html
+/login.php
+
+
+
+-> Misión 25 <-
+Determina cuál ruta aparece más veces.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cut -d " " -f 2 apache.log | sort | uniq -c | sort -nr | head -1
+      2 /admin.php
 
 
