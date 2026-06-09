@@ -150,16 +150,59 @@ evidence/malware.exe
 Usa find para mostrar el contenido encontrado junto con información detallada usando ls -l.
 Archivos Y Directorios
 
-┌──(root㉿kali)-[/home/kali/Linux-Labs/find/find_lab]
-└─# find . -type f,d | ls -l
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/find/find_lab]
+└─# find . -type f,d -exec ls -l {} +
+-rw-rw-r-- 1 root root   49 May 15 11:02 ./evidence/malware.exe
+-rw-rw-r-- 1 root root   31 May 15 11:03 ./evidence/.secret_key
+-rw-rw-r-- 1 root root   53 May 15 11:02 ./evidence/suspicious.txt
+-rw-rw-r-- 1 root root   51 May 15 10:59 ./logs/apache.log
+-rw-rw-r-- 1 root root   89 May 15 10:58 ./logs/auth.log
+-rw-rw-r-- 1 root root   46 May 15 10:59 ./logs/error.LOG
+-rw-rw-r-- 1 root root  202 May 20 17:15 ./README.md
+-rw-rw-r-- 1 root root   35 May 15 11:00 ./scripts/backup.sh
+-rw-rw-r-- 1 root root   31 May 15 11:01 ./scripts/hidden.sh
+-rw-rw-r-- 1 root root   32 May 15 11:01 ./scripts/scan.sh
+-rw-rw-r-- 1 root root   32 May 15 11:08 ./temp/old.log
+-rw-rw-r-- 1 root root   28 May 15 11:09 ./temp/temp1.tmp
+-rw-rw-r-- 1 root root   23 May 15 11:06 ./users/admin.txt
+-rw-rw-r-- 1 root root   27 May 15 11:07 ./users/Admin.TXT
+-rw-rw-r-- 1 root root   26 May 15 11:08 ./users/guest.txt
+
+.:
 total 24
 drwxrwxr-x 2 root root 4096 May 15 11:03 evidence
 drwxrwxr-x 2 root root 4096 May 15 10:59 logs
--rw-rw-r-- 1 root root  113 May 15 11:17 README.md
+-rw-rw-r-- 1 root root  202 May 20 17:15 README.md
 drwxrwxr-x 2 root root 4096 May 15 11:01 scripts
 drwxrwxr-x 2 root root 4096 May 15 11:09 temp
 drwxrwxr-x 2 root root 4096 May 15 11:08 users
 
+./evidence:
+total 8
+-rw-rw-r-- 1 root root 49 May 15 11:02 malware.exe
+-rw-rw-r-- 1 root root 53 May 15 11:02 suspicious.txt
 
+./logs:
+total 12
+-rw-rw-r-- 1 root root 51 May 15 10:59 apache.log
+-rw-rw-r-- 1 root root 89 May 15 10:58 auth.log
+-rw-rw-r-- 1 root root 46 May 15 10:59 error.LOG
+
+./scripts:
+total 12
+-rw-rw-r-- 1 root root 35 May 15 11:00 backup.sh
+-rw-rw-r-- 1 root root 31 May 15 11:01 hidden.sh
+-rw-rw-r-- 1 root root 32 May 15 11:01 scan.sh
+
+./temp:
+total 8
+-rw-rw-r-- 1 root root 32 May 15 11:08 old.log
+-rw-rw-r-- 1 root root 28 May 15 11:09 temp1.tmp
+
+./users:
+total 12
+-rw-rw-r-- 1 root root 23 May 15 11:06 admin.txt
+-rw-rw-r-- 1 root root 27 May 15 11:07 Admin.TXT
+-rw-rw-r-- 1 root root 26 May 15 11:08 guest.txt
 
 
