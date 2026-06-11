@@ -348,7 +348,7 @@ incidents.txt
 
 
 
-Misión 30 - SOC FINAL 😈🔥
+-> Misión 30 - SOC FINAL 😈🔥<-
 
 Responde:
 ¿Cuál es la IP que aparece más veces en todo el laboratorio considerando auth.log, vpn.log e ips.txt?
@@ -361,3 +361,159 @@ Responde:
 
 
 
+-> Misión 31 <-
+Encuentra todos los archivos .log del laboratorio y cuenta cuántos son.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -name "*.log" | xargs basename -a
+old_auth.log
+apache.log
+auth.log
+vpn.log
+
+
+
+-> Misión 32 <-
+Busca todas las líneas que contengan Failed en cualquier archivo .log y ordénalas alfabéticamente.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -name "*.log" -exec grep -h -i "Failed" {} + | sort   
+Failed login from 192.168.1.10
+Failed login from 192.168.1.10
+May 20 Failed login from 10.0.0.5 user root
+May 20 Failed login from 172.16.0.2 user guest
+May 20 Failed login from 192.168.1.10 user admin
+May 20 Failed login from 192.168.1.10 user admin
+VPN connection failed from 172.16.0.2
+
+
+
+-> Misión 33 <-
+Obtén una lista de todas las IPs presentes en auth.log sin repetir ninguna.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cut -d " " -f 6 auth.log | sort -u | sort -n 
+10.0.0.5
+172.16.0.2
+192.168.1.10
+
+
+
+-> Misión 34 <-
+Cuenta cuántas veces aparece cada IP en auth.log y ordénalas de mayor a menor frecuencia.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cut -d " " -f 6 auth.log | sort | uniq -c | sort -nr
+      2 192.168.1.10
+      2 10.0.0.5
+      1 172.16.0.2
+
+
+
+-> Misión 35 <-
+Muestra únicamente los usuarios que utilizan /bin/bash y ordénalos alfabéticamente.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 1,4 passwd.txt | grep -i "/bin/bash" | cut -d ":" -f 1 | sort 
+admin
+root
+
+
+
+-> Misión 36 <-
+Extrae los UID de passwd.txt y muestra únicamente los que sean mayores que 500.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# cut -d ":" -f 3 passwd.txt | awk '$1 > 500 {print $1}' 
+1000
+1001
+
+
+
+-> Misión 37 <-
+Cuenta cuántas veces aparece cada tipo de evento (Failed, Success, etc.) en auth.log.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# grep -i -E "Failed|Success" auth.log | sort | awk '{print $3}' | uniq -c 
+      4 Failed
+      1 Success
+
+
+
+-> Misión 38 <-
+Obtén una lista de todas las IPs que aparecen tanto en auth.log como en vpn.log.
+
+
+
+-> Misión 39 <-
+Encuentra todas las rutas que devuelven código 500 en apache.log.
+
+
+
+-> Misión 40 <-
+Cuenta cuántas rutas diferentes existen en apache.log.
+
+
+
+-> Misión 41 <-
+Muestra los nombres de malware sin duplicados y en orden alfabético.
+
+
+
+-> Misión 42 <-
+Determina cuál es el malware que aparece más veces.
+
+
+
+-> Misión 43 <-
+Cuenta cuántas líneas tiene cada archivo del directorio evidence.
+
+
+
+-> Misión 44 <-
+Busca todas las líneas que contengan la palabra admin en cualquier archivo del laboratorio.
+
+
+
+-> Misión 45 <-
+Obtén una lista única y ordenada de todos los usuarios que aparecen en el laboratorio.
+
+
+
+-> Misión 46 <-
+Calcula cuántas IPs distintas existen sumando auth.log, vpn.log e ips.txt.
+
+
+
+-> Misión 47 <-
+Encuentra la IP con mayor número de apariciones considerando todos los archivos donde exista una dirección IP.
+
+
+
+-> Misión 48 <-
+Genera un reporte con el siguiente formato:
+IP -> Cantidad de apariciones
+para todas las IPs encontradas en el laboratorio.
+
+
+
+
+-> Misión 49 <-
+Cuenta cuántos eventos relacionados con Failed existen en todo el laboratorio, incluyendo cualquier archivo donde aparezca esa palabra.
+
+
+
+-> Misión 50 - 🏆 Desafío Final de la Fase 1 <-
+Imagina que eres un analista SOC y debes entregar un resumen rápido del incidente.
+Genera un reporte usando únicamente comandos de Linux que responda:
+
+Total de eventos Failed.
+Total de eventos Success.
+Número de IPs únicas.
+IP con más apariciones.
+Usuario que más aparece.
+Cantidad de archivos .log.
+Cantidad total de incidentes registrados.
+Cantidad de muestras de malware únicas.
+Número de usuarios con /bin/bash.
+Total de líneas procesadas en todos los archivos del laboratorio.
