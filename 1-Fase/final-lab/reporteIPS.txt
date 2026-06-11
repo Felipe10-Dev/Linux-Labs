@@ -1,0 +1,4 @@
+192.168.1.10 -> 47 Apariciones
+10.0.0.5 -> 26 Apariciones
+172.16.0.2 -> 20 Apariciones
+192.168.1.20 -> 2 Apariciones
