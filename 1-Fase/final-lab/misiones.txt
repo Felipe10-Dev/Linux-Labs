@@ -443,50 +443,139 @@ Cuenta cuántas veces aparece cada tipo de evento (Failed, Success, etc.) en aut
 -> Misión 38 <-
 Obtén una lista de todas las IPs que aparecen tanto en auth.log como en vpn.log.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# cat listaIPs.txt
+192.168.1.10
+10.0.0.5
+172.16.0.2
+192.168.1.10
+10.0.0.5
+192.168.1.10
+10.0.0.5
+172.16.0.2
+192.168.1.10
+
 
 
 -> Misión 39 <-
 Encuentra todas las rutas que devuelven código 500 en apache.log.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# awk '$3 == 500' apache.log | cut -d " " -f 2 
+/admin.php
+/admin.php
 
 
 
 -> Misión 40 <-
 Cuenta cuántas rutas diferentes existen en apache.log.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/logs]
+└─# sort -k 2 apache.log | uniq | wc -l 
+4
+
 
 
 -> Misión 41 <-
 Muestra los nombres de malware sin duplicados y en orden alfabético.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/evidence]
+└─# sort -u malware.txt        
+backdoor.sh
+ransomware.bin
+trojan.exe
 
 
 
 -> Misión 42 <-
 Determina cuál es el malware que aparece más veces.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/evidence]
+└─# sort malware.txt | uniq -c | sort -nr 
+      2 trojan.exe
+      1 ransomware.bin
+      1 backdoor.sh
+
 
 
 -> Misión 43 <-
 Cuenta cuántas líneas tiene cada archivo del directorio evidence.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/evidence]
+└─# find . -type f -exec wc -l {} +                       
+  4 ./malware.txt
+  3 ./suspicious.txt
+  7 total
 
 
 
 -> Misión 44 <-
 Busca todas las líneas que contengan la palabra admin en cualquier archivo del laboratorio.
 
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -h -n -i "admin" {} +
+18:admins.txt
+57:./logs/auth.log:1:May 20 Failed login from 192.168.1.10 user admin
+59:./logs/auth.log:4:May 20 Failed login from 192.168.1.10 user admin
+89:admin
+113:admin
+136:admin -> /bin/bash
+148:May 20 Failed login from 192.168.1.10 user admin
+150:May 20 Failed login from 192.168.1.10 user admin
+260:POST /admin.php 500
+261:POST /admin.php 500
+283:/admin.php
+285:/admin.php
+294:/admin.php
+306:2 /admin.php
+358:      2 May 20 Failed login from 192.168.1.10 user admin
+385:May 20 Failed login from 192.168.1.10 user admin
+386:May 20 Failed login from 192.168.1.10 user admin
+418:admin
+474:Busca todas las líneas que contengan la palabra admin en cualquier archivo del laboratorio.
+3:POST /admin.php 500
+5:POST /admin.php 500
+1:      2 May 20 Failed login from 192.168.1.10 user admin
+1:May 20 Failed login from 192.168.1.10 user admin
+4:May 20 Failed login from 192.168.1.10 user admin
+4:admin:x:1001:/bin/bash
+1:admin
+3:admin
+
 
 
 -> Misión 45 <-
 Obtén una lista única y ordenada de todos los usuarios que aparecen en el laboratorio.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# sort usuarios.txt                    
+admin
+admin
+admin
+guest
+kali
+mysql
+root
+root
+root
 
 
 
 -> Misión 46 <-
 Calcula cuántas IPs distintas existen sumando auth.log, vpn.log e ips.txt.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/network]
+└─# sort IPsDistintas.txt | uniq | wc -l  
+4
+
 
 
 -> Misión 47 <-
 Encuentra la IP con mayor número de apariciones considerando todos los archivos donde exista una dirección IP.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -h -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq -c | sort -nr | head -1
+     47 192.168.1.10
 
 
 
@@ -495,11 +584,24 @@ Genera un reporte con el siguiente formato:
 IP -> Cantidad de apariciones
 para todas las IPs encontradas en el laboratorio.
 
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -h -i -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq -c | sort -nr | awk '{ print $2 " -> " $1 " Apariciones"}' > reporteIPS.txt
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# cat reporteIPS.txt          
+192.168.1.10 -> 47 Apariciones
+10.0.0.5 -> 26 Apariciones
+172.16.0.2 -> 20 Apariciones
+192.168.1.20 -> 2 Apariciones
 
 
 
 -> Misión 49 <-
 Cuenta cuántos eventos relacionados con Failed existen en todo el laboratorio, incluyendo cualquier archivo donde aparezca esa palabra.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -h -i -c "Failed" {} + | awk '{suma+=$1} END  {print suma}'
+57
 
 
 
@@ -508,12 +610,81 @@ Imagina que eres un analista SOC y debes entregar un resumen rápido del inciden
 Genera un reporte usando únicamente comandos de Linux que responda:
 
 Total de eventos Failed.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -o -h -c "Failed" {} + | awk '{suma+=$1} END {print suma " Veces"}' 
+57 Veces
+
 Total de eventos Success.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -o -h -c "Success" {} + | awk '{suma+=$1} END {print suma " Veces"}' 
+6 Veces
+
 Número de IPs únicas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq | wc -l | awk '{print "Cantidad IPs Unicas = " $1}'
+Cantidad IPs Unicas = 4
+
+
 IP con más apariciones.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq -c | sort -nr | head -1 | awk '{print $2 " -> Cantidad De Apariciones = " $1}'
+192.168.1.10 -> Cantidad De Apariciones = 48
+
 Usuario que más aparece.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# sort usuarios.txt | uniq -c | sort -nr | head -2
+      5 root
+      5 admin
+
 Cantidad de archivos .log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -name "*.log" | wc -l  
+4
+
 Cantidad total de incidentes registrados.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/reports]
+└─# cat incidents.txt | wc -l
+4
+
 Cantidad de muestras de malware únicas.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec grep -i -h -o -c "malware" {} + | sort | uniq | awk '{suma+=$1} END {print "Cantidad Muestras Malware Unicas = " suma}'
+Cantidad Muestras Malware Unicas = 9
+
 Número de usuarios con /bin/bash.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/final-lab/users]
+└─# grep -i "/bin/bash" passwd.txt | cut -d ":" -f 1 | wc -l
+2
+
 Total de líneas procesadas en todos los archivos del laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/final-lab]
+└─# find . -type f -exec wc -l {} +
+    3 ./backups/old_auth.log
+    5 ./network/connections.txt
+   13 ./network/IPsDistintas.txt
+    6 ./network/ips.txt
+    4 ./evidence/malware.txt
+    3 ./evidence/suspicious.txt
+  519 ./.misiones.txt
+    5 ./logs/apache.log
+    3 ./logs/IPfrecuente.txt
+    5 ./logs/auth.log
+    9 ./logs/listaIPs.txt
+    4 ./logs/vpn.log
+    4 ./users/passwd.txt
+    5 ./users/admins.txt
+   14 ./users/usuarios.txt
+    0 ./..misiones.txt.swp
+    4 ./reports/incidents.txt
+    4 ./reporteIPS.txt
+  610 total
