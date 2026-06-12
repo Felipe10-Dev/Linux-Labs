@@ -1,0 +1,241 @@
+🟢 Nivel 1 - Reconocimiento
+
+-> Misión 1 <-
+¿Cuántos archivos existen en todo el laboratorio?
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f | wc -l         
+19
+
+
+
+-> Misión 2 <-
+¿Cuántos archivos .log existen?
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -name "*.log" | wc -l 
+10
+
+
+
+-> Misión 3 <-
+Muestra todos los archivos ordenados alfabéticamente.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f | xargs  basename -a | sort 
+access.log
+auth.log
+auth_old.log
+compromised_hosts.txt
+connections.log
+detections.log
+dns.log
+error.log
+firewall.log
+groups.txt
+hashes.txt
+incidents.csv
+.misiones.txt
+..misiones.txt.swp
+passwd.txt
+README.md
+sudo.log
+suspicious_files.txt
+vpn.log
+
+
+
+-> Misión 4 <-
+Cuenta el total de líneas que hay entre todos los archivos .log.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -name "*.log" -exec wc -l {} +
+   5 ./vpn/vpn.log
+   3 ./backups/auth_old.log
+   5 ./firewall/firewall.log
+   6 ./network/dns.log
+   6 ./network/connections.log
+   6 ./malware/detections.log
+   7 ./web/access.log
+   5 ./web/error.log
+   7 ./auth/auth.log
+   6 ./auth/sudo.log
+  56 total
+
+
+
+-> Misión 5 <-
+Encuentra todos los archivos que contienen la palabra Failed.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -exec grep -l -i "Failed" {} + | xargs basename -a
+vpn.log
+auth_old.log
+incidents.csv
+auth.log
+
+
+
+🔵 Nivel 2 - Investigación de autenticación
+
+-> Misión 6 <-
+¿Cuántos intentos de inicio de sesión fallidos hay en auth.log?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i -c "Failed" auth.log                            
+5
+
+
+
+-> Misión 7 <-
+Obtén una lista de las IPs que realizaron intentos fallidos.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "Failed" auth.log | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+"
+192.168.10.15
+192.168.10.15
+172.16.5.7
+192.168.10.15
+8.8.8.8
+
+
+
+-> Misión 8 <-
+¿Cuántas IPs únicas realizaron intentos fallidos?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "Failed" auth.log | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort | uniq | sort -n
+8.8.8.8
+172.16.5.7
+192.168.10.15
+
+
+
+-> Misión 9 <-
+¿Qué IP realizó más intentos fallidos?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "Failed" auth.log | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort | uniq -c | sort -nr | head -1
+      3 192.168.10.15
+
+
+
+-> Misión 10 <-
+¿Qué usuario sufrió más intentos de autenticación fallidos?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "Failed" auth.log | awk '{print $NF}' | sort | uniq -c | sort -nr | head -1
+      3 admin
+
+
+
+🟡 Nivel 3 - Análisis de sudo
+
+-> Misión 11 <-
+¿Cuántos comandos sudo fueron ejecutados?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "executed" sudo.log | wc -l  
+4
+
+
+
+-> Misión 12 <-
+¿Qué usuario ejecutó más comandos sudo?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "executed" sudo.log | cut -d " " -f 1 | uniq -c
+      1 admin
+      1 root
+      1 kali
+      1 admin
+
+
+
+-> Misión 13 <-
+Lista los usuarios sin repetir que utilizaron sudo.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# awk '$3 == "sudo"' sudo.log | cut -d " " -f 1 | sort | uniq   
+admin
+kali
+root
+
+
+
+-> Misión 14 <-
+¿Cuántos eventos de permission denied existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "denied" sudo.log | sort | wc -l   
+1
+
+
+
+-> Misión 15 <-
+Genera un conteo por usuario de las ejecuciones de sudo.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# grep -i "executed" sudo.log | cut -d " " -f 1 | sort | uniq -c 
+      2 admin
+      1 kali
+      1 root
+
+
+
+🟠 Nivel 4 - Investigación Web
+
+-> Misión 16 <-
+¿Cuántas peticiones POST hubo?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 1 access.log | awk '$1 == "POST"' | sort | wc -l  
+3
+
+
+
+-> Misión 17 <-
+¿Cuántos errores 500 existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 3 access.log | awk '$1 == 500' | sort | wc -l
+2
+
+
+
+-> Misión 18 <-
+¿Qué ruta fue solicitada más veces?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 access.log | sort | uniq -c | sort -nr | head -1
+      2 /upload.php
+
+
+
+-> Misión 19 <-
+Lista todas las rutas sin duplicados.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 access.log | sort | uniq                        
+/admin.php
+/config.php
+/dashboard.php
+/index.php
+/login.php
+/upload.php
+
+
+
+-> Misión 20 <-
+¿Cuántos códigos HTTP diferentes aparecen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 3 access.log | sort | uniq
+200
+302
+403
+404
+500
+
+
+
