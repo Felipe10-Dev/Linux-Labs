@@ -239,3 +239,325 @@ Lista todas las rutas sin duplicados.
 
 
 
+🔴 Nivel 5 - Errores de aplicación
+
+-> Misión 21 <-
+¿Cuántos Segmentation fault existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# grep -i "segmentation" error.log | wc -l 
+2
+
+
+
+-> Misión 22 <-
+¿Qué tipo de error aparece más veces?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 error.log | sort | uniq -c | sort -nr | head -1
+      2 fault
+
+
+
+-> Misión 23 <-
+Lista todos los tipos de error sin repetir.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 error.log | sort | uniq                        
+Fatal
+fault
+timeout
+Warning
+
+
+
+-> Misión 24 <-
+Ordena los errores por frecuencia.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 error.log | sort | uniq -c | sort -nr          
+      2 fault
+      1 Warning
+      1 timeout
+      1 Fatal
+
+
+
+-> Misión 25 <-
+Cuenta el número total de errores registrados.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/web]
+└─# cut -d " " -f 2 error.log | sort | wc -l             
+5
+
+
+
+🟣 Nivel 6 - VPN
+
+-> Misión 26 <-
+¿Cuántas conexiones VPN exitosas existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# grep -i "connected" vpn.log | sort | wc -l 
+4
+
+
+
+-> Misión 27 <-
+¿Qué IP aparece más veces en vpn.log?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# cut -d " " -f 3 vpn.log | sort | uniq -c | sort -nr | head -1
+      2 10.10.0.20
+
+
+
+-> Misión 28 <-
+Lista las IPs únicas de la VPN.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# awk '{print $NF}' vpn.log | sort -u                     
+10.10.0.20
+172.16.5.7
+192.168.10.15
+8.8.8.8
+
+
+
+-> Misión 29 <-
+¿Cuántos eventos VPN Failed existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# grep -i "Failed" vpn.log | sort | wc -l
+1
+
+
+
+-> Misión 30 <-
+¿Qué IP intentó conectarse y falló?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# grep -i "Failed" vpn.log | awk '{print $NF}'
+172.16.5.7
+
+
+
+🟤 Nivel 7 - Firewall
+
+-> Misión 31 <-
+¿Cuántos eventos BLOCK existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/firewall]
+└─# awk '$1 == "BLOCK"' firewall.log | sort | wc -l
+3
+
+
+
+-> Misión 32 <-
+¿Qué IP fue bloqueada más veces?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/firewall]
+└─# awk '$1 == "BLOCK"' firewall.log | sort | uniq -c | sort -nr | head -1
+      2 BLOCK 8.8.8.8
+
+
+
+-> Misión 33 <-
+Lista todas las IPs bloqueadas sin repetir.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/firewall]
+└─# awk '$1 == "BLOCK"' firewall.log | cut -d " " -f 2 | sort | uniq
+172.16.5.7
+8.8.8.8
+
+
+
+-> Misión 34 <-
+¿Cuántos eventos ALLOW existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/firewall]
+└─# grep -i "allow" firewall.log | sort | wc -l
+2
+
+
+
+-> Misión 35 <-
+Genera un reporte:
+
+IP -> Veces bloqueada
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/firewall]
+└─# grep -i "block" firewall.log | sort | uniq -c | sort -nr | awk '{print $3 " -> " $1 " Veces Bloqueada"}'  
+8.8.8.8 -> 2 Veces Bloqueada
+172.16.5.7 -> 1 Veces Bloqueada
+
+
+
+⚫Nivel 8 - Usuarios
+
+-> Misión 36 <-
+¿Cuántos usuarios tienen /bin/bash?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# grep -i "/bin/bash" passwd.txt | wc -l
+2
+
+
+
+-> Misión 37 <-
+Lista únicamente los nombres de usuario.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# cut -d ":" -f 1 passwd.txt                                   
+root
+admin
+kali
+guest
+mysql
+
+
+-> Misión 38 <-
+Lista únicamente las shells utilizadas.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# cut -d ":" -f 4 passwd.txt 
+/bin/bash
+/bin/bash
+/bin/zsh
+/bin/false
+/bin/false
+
+
+
+-> Misión 39 <-
+¿Cuántos tipos de shell diferentes existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# cut -d ":" -f 4 passwd.txt | sort | uniq | wc -l
+3
+
+
+
+-> Misión 40 <-
+¿Qué shell aparece más veces?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# cut -d ":" -f 4 passwd.txt | sort | uniq -c | sort -nr | head -2
+      2 /bin/false
+      2 /bin/bash
+
+
+
+🟢 Nivel 9 - Malware
+
+-> Misión 41 <-
+¿Cuántos hashes únicos existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# sort hashes.txt | uniq -u 
+999999
+d4e5f6
+
+
+
+Misión 42
+¿Qué hash aparece más veces?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# sort hashes.txt | uniq -c | sort -nr | head -2
+      2 ffff11
+      2 a1b2c3
+
+
+
+Misión 43
+¿Qué tipo de malware aparece con mayor frecuencia?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# awk '{print $1}' detections.log | sort | uniq -c | sort -nr | head -1
+      3 Trojan
+
+
+
+Misión 44
+Lista los tipos de malware ordenados por frecuencia.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# awk '{print $1}' detections.log | sort | uniq -c | sort -nr          
+      3 Trojan
+      2 Backdoor
+      1 Ransomware
+
+
+Misión 45
+¿Cuántos tipos distintos de malware existen?
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# awk '{print $1}' detections.log | sort | uniq | wc -l       
+3
+
+
+
+🔵 Nivel 10 - Correlación (SOC REAL)
+
+-> Misión 46 <-
+¿Qué IP aparece tanto en auth.log como en vpn.log y connections.log?
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# sort IPpresente.txt | uniq   
+10.10.0.20
+172.16.5.7
+192.168.10.15
+8.8.8.8
+
+
+
+-> Misión 47 <-
+¿Cuál es la IP con más apariciones considerando auth.log, vpn.log, connections.log y firewall.log?
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# sort IPMasApariciones.txt | uniq -c | sort -nr | head -2
+      7 192.168.10.15
+      7 10.10.0.20
+
+
+
+-> Misión 48 <-
+Genera un reporte de todas las IPs con su número total de apariciones en el laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -exec grep -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq -c | sort -nr
+     23 192.168.10.15
+     19 10.10.0.20
+     15 8.8.8.8
+     13 172.16.5.7
+
+
+
+-> Misión 49 <-
+Identifica qué usuario parece tener mayor actividad privilegiada considerando autenticaciones y sudo.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# sort UsuarioMayorActividad.txt | uniq -c
+      2 admin
+      2 kali
+      2 root
+
+
+
+🏆 Misión 50 - Informe Ejecutivo
+
+Sin editar manualmente los archivos, genera un informe usando únicamente comandos de Linux que responda:
+
+Total de intentos Failed.
+Total de inicios de sesión Success.
+IP más activa del laboratorio.
+Usuario con más actividad.
+Número de conexiones VPN exitosas.
+Cantidad de IPs únicas observadas.
+Cantidad de eventos BLOCK.
+Malware más frecuente.
+Número de usuarios con /bin/bash.
+Total de incidentes registrados.
+
+
