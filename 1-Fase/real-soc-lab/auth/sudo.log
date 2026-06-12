@@ -1,0 +1,6 @@
+admin executed sudo apt update
+root executed sudo systemctl restart apache2
+kali executed sudo su
+admin executed sudo useradd test
+guest permission denied
+

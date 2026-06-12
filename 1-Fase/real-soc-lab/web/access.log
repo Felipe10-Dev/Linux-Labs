@@ -1,0 +1,7 @@
+GET /index.php 200
+POST /login.php 302
+GET /admin.php 403
+POST /upload.php 500
+POST /upload.php 500
+GET /dashboard.php 200
+GET /config.php 404

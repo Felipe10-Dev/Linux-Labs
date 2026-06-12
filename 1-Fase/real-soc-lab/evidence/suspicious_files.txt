@@ -1,0 +1,4 @@
+/tmp/backdoor.sh
+/var/www/html/shell.php
+/tmp/backdoor.sh
+/usr/bin/nc

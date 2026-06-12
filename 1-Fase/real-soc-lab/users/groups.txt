@@ -1,0 +1,5 @@
+root sudo
+admin sudo
+kali developers
+guest users
+mysql database

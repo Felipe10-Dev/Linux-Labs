@@ -1,0 +1,5 @@
+root:x:0:/bin/bash
+admin:x:1001:/bin/bash
+kali:x:1002:/bin/zsh
+guest:x:1003:/bin/false
+mysql:x:110:/bin/false
