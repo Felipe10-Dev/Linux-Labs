@@ -584,11 +584,41 @@ Número de conexiones VPN exitosas.
 
 Cantidad de IPs únicas observadas.
 
-
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# grep -r -o -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | sort | uniq -u  
+auth/auth.log:172.16.5.7
+auth/auth.log:8.8.8.8
+backups/auth_old.log:192.168.10.15
+firewall/firewall.log:10.10.0.20
+firewall/firewall.log:172.16.5.7
+firewall/firewall.log:192.168.10.15
+network/connections.log:172.16.5.7
+network/connections.log:8.8.8.8
+vpn/vpn.log:172.16.5.7
+vpn/vpn.log:192.168.10.15
+vpn/vpn.log:8.8.8.8
 
 Cantidad de eventos BLOCK.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find firewall/ -type f -exec grep -i "BLOCK" {} + | wc -l
+3
+
 Malware más frecuente.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/malware]
+└─# sort detections.log | uniq -c | sort -nr | head -1
+      3 Trojan
+
 Número de usuarios con /bin/bash.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/users]
+└─# grep -i "/bin/bash" passwd.txt | sort | wc -l 
+2
+
 Total de incidentes registrados.
 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/reports]
+└─# wc -l incidents.csv                               
+5 incidents.csv
 
