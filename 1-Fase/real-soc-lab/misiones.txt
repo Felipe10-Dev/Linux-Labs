@@ -550,11 +550,42 @@ Identifica qué usuario parece tener mayor actividad privilegiada considerando a
 Sin editar manualmente los archivos, genera un informe usando únicamente comandos de Linux que responda:
 
 Total de intentos Failed.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -exec grep -h -i "Failed" {} + | wc -l
+21
+
 Total de inicios de sesión Success.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/auth]
+└─# find auth.log -type f -exec grep -h -i "Success" {} + | wc -l 
+2
+
 IP más activa del laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# cat IPMasApariciones.txt | sort | uniq -c | sort -nr | head -2
+      7 192.168.10.15
+      7 10.10.0.20
+
 Usuario con más actividad.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# cat UsuarioMayorActividad.txt | sort | uniq -c | sort -nr
+      2 root
+      2 kali
+      2 admin
+
 Número de conexiones VPN exitosas.
+
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/real-soc-lab/vpn]
+└─# grep -i "Connected" vpn.log | wc -l
+4
+
 Cantidad de IPs únicas observadas.
+
+
+
 Cantidad de eventos BLOCK.
 Malware más frecuente.
 Número de usuarios con /bin/bash.
