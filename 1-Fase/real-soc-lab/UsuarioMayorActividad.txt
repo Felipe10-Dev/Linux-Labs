@@ -1,6 +1,0 @@
-kali
-root
-admin
-root
-kali
-admin
