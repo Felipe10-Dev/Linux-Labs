@@ -622,3 +622,75 @@ Total de incidentes registrados.
 └─# wc -l incidents.csv                               
 5 incidents.csv
 
+
+
+Misión 51
+
+Identifica qué IP aparece en:
+
+auth.log
+vpn.log
+connections.log
+
+al mismo tiempo.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# sort IPaparecida.txt | uniq -c 
+      3 10.10.0.20
+      3 172.16.5.7
+      3 192.168.10.15
+      3 8.8.8.8
+
+
+
+Misión 52
+
+Determina qué IP aparece en más archivos diferentes del laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -not -path '*/.*' -exec grep -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort| uniq -c | sort -nr | head -1
+      9 10.10.0.20
+
+
+
+Misión 53
+
+Genera una lista única de todas las IPs observadas en el laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -not -path '*/.*' -exec grep -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq   
+10.10.0.20
+172.16.5.7
+192.168.10.15
+8.8.8.8
+
+
+
+Misión 54
+
+Calcula cuántas veces aparece cada IP considerando:
+
+auth.log
+vpn.log
+connections.log
+firewall.log
+auth_old.log
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# cat IPsveces.txt | sort | uniq -c | sort -nr 
+      9 10.10.0.20
+      8 192.168.10.15
+      5 8.8.8.8
+      4 172.16.5.7
+
+
+
+Misión 55
+
+Determina cuál es la IP más activa de todo el laboratorio.
+
+┌──(root㉿kali)-[/home/kali/Linux-Labs/1-Fase/real-soc-lab]
+└─# find . -type f -not -path '*/.*' -exec grep -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" {} + | sort | uniq -c | sort -nr | head -1 
+      9 10.10.0.20
+
+
