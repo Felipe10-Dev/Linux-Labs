@@ -1,0 +1,12 @@
+Failed 192.168.10.15
+Failed 192.168.10.15
+Failed 172.16.5.7
+Failed 192.168.10.15
+Failed 8.8.8.8
+VPN Connected 10.10.0.20
+VPN Connected 192.168.10.15
+VPN Connected 10.10.0.20
+VPN Connected 8.8.8.8
+ALLOW 10.10.0.20
+ALLOW 192.168.10.15
+
