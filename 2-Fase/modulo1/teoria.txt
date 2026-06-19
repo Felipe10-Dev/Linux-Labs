@@ -1,0 +1,52 @@
+QUE ES UNA RED?
+
+Definicion -> Una red es un conjunto de dispositivos conectados entre si para intercambiar informacion
+
+Ejemplo:
+
+Flujo De Una RED:
+Tu PC -> Router -> Internet -> Servidor De Google
+
+Componentes Basicos De Una Red
+
+HOST -> Cualquier Dispositivo Conectado
+
+Ejemplos: 
+Computador
+Celular
+Portatil 
+
+
+ROUTER -> Dispositivo Que Conecta Redes
+
+Ejemplo:
+Tu Casa -> Router -> Internet
+
+
+Switch -> Conecta Dispositivos Dentro De Una Misma Red
+
+Ejemplo: 
+PC1 - PC2 - PC3 -> Switch
+
+
+Servidor -> Equipo Que Ofrece Servicios.
+
+Ejemplos: 
+Servidor Web 
+Servidor DNS
+Servidor Correo
+Servidor Base De Datos
+
+
+
+Objetivo: 
+Permitir la comunicacion entre dispositivos. 
+
+Uso En SOC:
+Permite entender conexiones, eventos de red, origen de ataques y comunicaciones entre sistemas.
+
+
+
+
+
+
