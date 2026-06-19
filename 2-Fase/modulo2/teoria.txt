@@ -1,0 +1,57 @@
+¿Que Es Una IP?
+
+IP(Internet Protocol) -> Una Direccion IP Es Un Identificador Unico Que Permite Identificar Un Dispositivo Dentro De Una Red.
+
+Piensa En Una IP Como La Direccion De Una Casa.
+
+Casa: 
+Calle 38 # 44 - 50
+
+Red: 
+192.168.1.20
+
+
+Estructura De Una IPv4
+
+192
+168
+1
+10
+
+Estos Grupos Se Llaman Octetos Porque Cada Uno Tiene 8 Bits
+
+
+Rango De Cada Octeto
+
+Cada Numero Puede Ir Desde: 
+0 Hasta 255
+
+
+IP Publica Vs IP Privada
+
+
+IP Privada -> Se Usan Dentro De Redes Internas, No Son Accesibles Directamente Desde Internet
+
+Rango 1
+
+10.0.0.0 - 10.255.255.255
+
+Rango 2
+
+172.16.0.0 - 172.31.255.255
+
+Rango 3
+
+192.168.0.0 - 192.168.255.255
+
+
+IP Publica -> Es Visible En Internet
+
+8.8.8.8 -> Servidor DNS De Google
+
+
+
+
+
+
+
