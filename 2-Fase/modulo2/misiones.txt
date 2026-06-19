@@ -1,0 +1,123 @@
+Mini reto SOC 😈
+
+Dime cuáles de estas IPs son privadas y cuáles son públicas:
+
+1) 192.168.50.10  -> Privada
+
+2) 8.8.8.8 -> Publica
+
+3) 172.20.5.7 -> Privada
+
+4) 10.0.15.20 -> Privada
+
+5) 185.120.50.10 -> Publica
+
+
+
+-> Mision 1 <-
+¿Qué significa IPv4?
+
+Internet Protocol Version 4
+
+
+
+-> Mision 2 <-
+¿Qué es una dirección IP?
+
+Identificador Unico De Dispositivos Dentro De Una Red
+
+
+
+-> Mision 3 <-
+¿Cuántos octetos tiene una dirección IPv4?
+
+Ejemplo:
+192.168.1.10
+
+4 Octetos, Cada Uno De 8 Bits
+
+
+
+-> Mision 4 <-
+¿Cuál es el valor mínimo y máximo que puede tener un octeto?
+
+Valor Minimo = 0
+Valor Maximo = 255
+
+
+
+-> Mision 5 <-
+¿La siguiente IP es válida o inválida?
+192.300.1.10
+Y explica por qué.
+
+Es Invalida Porque Sobrepasa El Limite Maximo Aceptado Por Un Octeto
+
+
+
+-> Mision 6 <-
+Menciona los tres rangos de IP privadas.
+
+10.0.0.0 - 10.255.255.255
+172.16.0.0 - 172.31.255.255
+192.168.0.0 - 192.168.255.255
+
+
+
+-> Mision 7 <-
+¿La IP siguiente es pública o privada?
+172.25.10.15
+
+Privada 
+
+
+
+-> Mision 8 <-
+¿La IP siguiente es pública o privada?
+200.10.5.8
+
+Publica
+
+
+
+-> Mision 9 <-
+Cuando ves un log:
+Failed login from 192.168.1.25
+¿Qué puedes concluir inmediatamente sobre esa IP?
+
+Primero Que Es Un Acceso Login Fallido Desde Una IP Privada Osea Local, Que Se Encuentra Dentro De Nuestra Red
+
+
+
+-> Mision 10 <-
+Cuando dos equipos se comunican:
+192.168.1.0 -> 10.10.0.20
+¿Qué representa la primera IP y qué representa la segunda?
+
+Primera IP = Origen
+Segunda IP = Destino
+
+
+
+-> Mision 11 <-
+Si ves:
+Failed login from 185.120.50.10
+¿Por qué podría llamar más la atención que:
+Failed login from 192.168.1.10?
+
+Es Facil, Porque La Primera IP Es Publica Viene De Internet Osea De Afuera De Nuestra Red, Esto Hace Que Se Le Preste Un Grado Mayor De Atencion
+
+
+-> Mision 12 <-
+¿Por qué es importante para un analista SOC distinguir entre IPs públicas y privadas?
+
+Para El Analista SOC Es Importantisimo Saber Distinguir Entre Estas 2 Por Mucho Factores: 
+
+- Gestionar Riesgos De Forma Optima
+- Reducir Falsos Positivos Y Enfocarse En Amenazas Externas
+- Tener Conocimineto De Que IPS Internas Son Comunes
+
+Entre Otros Mas Factores. 
+
+
+
