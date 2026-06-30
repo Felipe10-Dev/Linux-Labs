@@ -115,6 +115,12 @@ en:
 
 paths.txt
 
+┌──(root㉿kali)-[/home/…/1-Fase/sed/sed_lab/paths]
+└─# sed 's:root:admin:' paths.txt     
+admin:/bin/bash
+kali:/bin/zsh
+mysql:/bin/false
+
 
 
 -> Mision 8 <-
