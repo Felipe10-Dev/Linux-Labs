@@ -3,11 +3,15 @@
 Usa grep para mostrar todas las líneas que contengan la palabra:
 Failed
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -i "Failed" auth.log
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# find . -type f -exec grep -i -h "Failed" {} +
+[error] Failed service restart for apache
 May 20 10:01:10 Failed login from 192.168.1.10 user admin
 May 20 10:01:20 Failed login from 192.168.1.10 user root
 May 20 10:03:00 Failed login from 172.16.0.2 user guest
+Failed VPN login from 192.168.50.20
+Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
+Apr 20 09:05:10 Failed login from 192.168.100.50 user root
 
 
 
@@ -16,8 +20,12 @@ May 20 10:03:00 Failed login from 172.16.0.2 user guest
 Usa grep para buscar la palabra:
 admin
 
-┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
-└─# grep -i "admin" grep_lab/users/users.txt
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# find . -type f -exec grep -i --color=auto -h "admin" {} + 
+May 20 10:01:10 Failed login from 192.168.1.10 user admin
+May 20 10:02:00 Success login from 10.0.0.5 user admin
+User admin connected to VPN
+Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
 admin
 Admin
 
@@ -28,8 +36,10 @@ Admin
 Usa grep para buscar la palabra exacta:
 root
 
-┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
-└─# grep -w "root" grep_lab/users/users.txt  
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# find . -type f -exec grep -w --color=auto -h "root" {} +
+May 20 10:01:20 Failed login from 192.168.1.10 user root
+Apr 20 09:05:10 Failed login from 192.168.100.50 user root
 root
 
 
@@ -39,20 +49,26 @@ root
 Usa grep para contar cuántas veces aparece: 
 Failed
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -c -i "Failed" auth.log            
-3
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep -r -i "Failed" | wc -l
+7
 
 
 
 -> Mision 5 <-
 
-Usa grep para mostrar todas las líneas de:
-!Failed
-
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -i -v "Failed" auth.log 
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep -r -i -h -v "Failed" --exclude="README.md"
+[info] Apache started successfully
+[warning] Memory usage high
 May 20 10:02:00 Success login from 10.0.0.5 user admin
+VPN connection from 10.10.10.5 established
+User admin connected to VPN
+admin
+root
+guest
+mysql
+Admin
 
 
 
@@ -61,22 +77,32 @@ May 20 10:02:00 Success login from 10.0.0.5 user admin
 Usa grep para mostrar las líneas que contengan:
 Failed
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -n -i "Failed" apache.log
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep -r -i -n -h "Failed"
 1:[error] Failed service restart for apache
+1:May 20 10:01:10 Failed login from 192.168.1.10 user admin
+2:May 20 10:01:20 Failed login from 192.168.1.10 user root
+4:May 20 10:03:00 Failed login from 172.16.0.2 user guest
+2:Failed VPN login from 192.168.50.20
+1:Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
+2:Apr 20 09:05:10 Failed login from 192.168.100.50 user root
 
 
 
 -> Mision 7 <-
 
-Usa grep para mostrar solo las direcciones IP encontradas en:
+Usa grep para mostrar solo las direcciones IPs del laboratorio:
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -i -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" auth.log            
-May 20 10:01:10 Failed login from 192.168.1.10 user admin
-May 20 10:01:20 Failed login from 192.168.1.10 user root
-May 20 10:02:00 Success login from 10.0.0.5 user admin
-May 20 10:03:00 Failed login from 172.16.0.2 user guest
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep --exclude="README.md" -r -i -h -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" 
+192.168.1.10
+192.168.1.10
+10.0.0.5
+172.16.0.2
+10.10.10.5
+192.168.50.20
+192.168.100.50
+192.168.100.50
 
 
 
@@ -101,14 +127,13 @@ backup/old_auth.log:Apr 20 09:05:10 Failed login from 192.168.100.50 user root
 Usa grep para mostrar solo el nombre de los archivos dentro de:
 Admin
 
-┌──(root㉿kali)-[/home/kali/Linux-Labs/grep]
-└─# grep -r -i "admin" grep_lab                         
-grep_lab/logs/auth.log:May 20 10:01:10 Failed login from 192.168.1.10 user admin
-grep_lab/logs/auth.log:May 20 10:02:00 Success login from 10.0.0.5 user admin
-grep_lab/logs/vpn.log:User admin connected to VPN
-grep_lab/backup/old_auth.log:Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
-grep_lab/users/users.txt:admin
-grep_lab/users/users.txt:Admin
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep -r -i -l "admin"   
+logs/auth.log
+logs/vpn.log
+backup/old_auth.log
+users/users.txt
+
 
 
 -> Mision 10 <-
@@ -116,13 +141,12 @@ grep_lab/users/users.txt:Admin
 Usa grep para mostrar solo la primera coincidencia de la palabra:
 Failed
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/grep/grep_lab/logs]
-└─# grep -r -i "Failed" 
-apache.log:[error] Failed service restart for apache
-auth.log:May 20 10:01:10 Failed login from 192.168.1.10 user admin
-auth.log:May 20 10:01:20 Failed login from 192.168.1.10 user root
-auth.log:May 20 10:03:00 Failed login from 172.16.0.2 user guest
-vpn.log:Failed VPN login from 192.168.50.20
+┌──(root㉿kali)-[/home/…/Linux-Labs/1-Fase/grep/grep_lab]
+└─# grep -r -i -m 1 "Failed" 
+logs/apache.log:[error] Failed service restart for apache
+logs/auth.log:May 20 10:01:10 Failed login from 192.168.1.10 user admin
+logs/vpn.log:Failed VPN login from 192.168.50.20
+backup/old_auth.log:Apr 20 09:01:10 Failed login from 192.168.100.50 user admin
 
 
 
