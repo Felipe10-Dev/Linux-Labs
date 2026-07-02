@@ -1,7 +1,6 @@
 -> Mision 1 <-
 
 Usa sort para ordenar alfabéticamente el archivo:
-
 users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/users]
@@ -17,7 +16,6 @@ root
 -> Mision 2 <-
 
 Usa sort para ordenar alfabéticamente el archivo:
-
 users.txt
 
 pero en orden inverso.
@@ -35,7 +33,6 @@ admin
 -> Mision 3 <-
 
 Usa sort para ordenar numéricamente el archivo:
-
 scores.txt
 
 de menor a mayor.
@@ -53,7 +50,6 @@ de menor a mayor.
 -> Mision 4 <-
 
 Usa sort para ordenar numéricamente el archivo:
-
 scores.txt
 
 de mayor a menor.
@@ -71,7 +67,6 @@ de mayor a menor.
 -> Mision 5 <-
 
 Usa sort para ordenar las direcciones IP del archivo:
-
 ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/logs]
@@ -88,7 +83,6 @@ ips.txt
 -> Mision 6 <-
 
 Usa sort para ordenar y eliminar los duplicados del archivo:
-
 ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/logs]
@@ -103,7 +97,6 @@ ips.txt
 -> Mision 7 <-
 
 Usa sort para ordenar el archivo:
-
 ventas.txt
 
 utilizando la segunda columna como criterio de orden.
@@ -121,25 +114,24 @@ Pedro 500
 -> Mision 8 <-
 
 Usa awk y sort juntos para mostrar únicamente los nombres de:
-
 ventas.txt
 
 ordenados alfabéticamente.
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/sort/sort_lab/sales]
-└─# awk '$1' ventas.txt | sort    
-Carlos 250
-Juan 300
-Luis 100
-Maria 150
-Pedro 500
+┌──(root㉿kali)-[/home/…/1-Fase/sort/sort_lab/sales]
+└─# sort -k 1 ventas.txt | awk '{print $1}'
+Carlos
+Juan
+Luis
+Maria
+Pedro
+
 
 
 
 -> Mision 9 <-
 
 Usa awk y sort juntos para mostrar únicamente los valores numéricos de:
-
 ventas.txt
 
 ordenados de menor a mayor.
@@ -161,7 +153,6 @@ Usa:
 sort
 
 y cualquier comando que ya conozcas para obtener una lista ordenada de las IPs presentes en:
-
 ips.txt
 
 sin repetir ninguna dirección.
