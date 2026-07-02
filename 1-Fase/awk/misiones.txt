@@ -1,8 +1,7 @@
-Misión 1
+-> Misión 1 <-
 
 Usa awk para mostrar solo la primera columna del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/users]
 └─# awk -F ":" '{print $1}' users.txt
@@ -12,11 +11,10 @@ mysql
 
 
 
-Misión 2
+-> Misión 2 <-
 
 Usa awk para mostrar solo la tercera columna del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/users]
 └─# awk -F ":" '{print $3}' users.txt
@@ -26,11 +24,10 @@ Usa awk para mostrar solo la tercera columna del archivo:
 
 
 
-Misión 3
+-> Misión 3 <-
 
 Usa awk usando  : como delimitador para mostrar solo los shells del archivo:
-
--> users.txt <-
+users.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/users]
 └─# awk -F ":" '{print $4}' users.txt
@@ -40,11 +37,10 @@ Usa awk usando  : como delimitador para mostrar solo los shells del archivo:
 
 
 
-Misión 4
+-> Misión 4 <-
 
 Usa awk para mostrar: columna 1 y columna 4 del archivo:
-
--> auth.log <-
+auth.log
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/logs]
 └─# awk '{print $1, $4}' auth.log      
@@ -55,11 +51,10 @@ May admin
 
 
 
-Misión 5
+-> Misión 5 <-
 
 Usa awk para mostrar solamente las líneas donde la columna 2 sea: Failed en:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/network]
 └─# awk '$2 == "Failed"' ips.txt  
@@ -68,11 +63,10 @@ Usa awk para mostrar solamente las líneas donde la columna 2 sea: Failed en:
 
 
 
-Misión 6
+-> Misión 6 <-
 
 Usa awk para mostrar solamente las líneas donde la columna 2 sea mayor que: 200 en:
-
--> ventas.txt <-
+ventas.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/sales]
 └─# awk '$2 > 200' ventas.txt
@@ -81,11 +75,10 @@ Pedro 500
 
 
 
-Misión 7
+-> Misión 7 <-
 
 Usa awk para sumar todos los valores de la columna 2 del archivo:
-
--> ventas.txt <-
+ventas.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/sales]
 └─# awk '{sum+=$2} {print sum}' ventas.txt
@@ -96,11 +89,10 @@ Usa awk para sumar todos los valores de la columna 2 del archivo:
 
 
 
-Misión 8
+-> Misión 8 <-
 
 Usa grep y awk juntos para mostrar solo las IPs de las líneas que contengan: Failed en:
-
--> auth.log <-
+auth.log
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/logs]
 └─# grep -i "Failed" auth.log | awk '{print $3}'
@@ -110,11 +102,10 @@ Usa grep y awk juntos para mostrar solo las IPs de las líneas que contengan: Fa
 
 
 
-Misión 9
+-> Misión 9 <-
 
 Usa awk para mostrar:
-
--> usuario -> shell <-
+usuario -> shell
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/users]
 └─# awk -F ":" '{print $1 " -> "  $4}' users.txt            
@@ -125,11 +116,10 @@ mysql -> /bin/false
 
 
 
-Misión 10
+-> Misión 10 <-
 
 Usa awk para contar cuántas líneas tienen: Failed en:
-
--> ips.txt <-
+ips.txt
 
 ┌──(root㉿kali)-[/home/…/Linux-Labs/awk/awk_lab/network]
 └─# awk '$2 == "Failed" {count++} END {print count}' ips.txt 
