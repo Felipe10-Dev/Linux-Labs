@@ -71,9 +71,9 @@ auth.log
 Usa sort, uniq y wc para contar cuántas IPs únicas existen en:
 ips.txt
 
-┌──(root㉿kali)-[/home/…/Linux-Labs/wc/wc_lab/network]
-└─# sort -n -u ips.txt | uniq -c | wc -l
-3
+┌──(root㉿kali)-[/home/…/1-Fase/wc/wc_lab/network]
+└─# sort -n ips.txt | uniq -u | wc -l 
+2
 
 
 
