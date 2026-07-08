@@ -1,54 +1,104 @@
-MODULO 1 -> REDES PARA SOC ANALYST
+Teoria - Fundamentos De Redes
 
-¿QUE ES UNA RED?
 
-Definicion -> Una red es un conjunto de dispositivos conectados entre si para intercambiar informacion
+1. Que es una red?
 
-Ejemplo:
+Una red informatica es un conjunto de dispositivos conectados entre si con e objetivo de intercambiar informacion
+y compartir recursos mediante protocolos de comunicacion.
 
-Flujo De Una RED:
-Tu PC -> Router -> Internet -> Servidor De Google
+Los dispositivos pueden comunicarse utilizando medios fisicos, como cables, o medios inalambricos, como Wi-Fi.
 
-Componentes Basicos De Una Red
+Una red permite que diferentes equipos trabajen de forma conjunta y compartan informacion de manera eficiente. 
 
-HOST -> Cualquier Dispositivo Conectado a la red que puede enviar o recibir informacion
+
+
+
+
+2. Para que sirve una red?
+
+Las redes permiten:
+
+* Compartir archivos.
+* Compartir impresoras.
+* Acceder a internet. 
+* Compartir aplicaciones. 
+* Enviar y recibir informacion.
+* Permitir la comunicacion entre usuarios y dispositivos. 
+* Administrar recursos de manera centralizada.
+
+
+
+
+
+3. Componentes basicos de una red
+
+Una red puede estar formada por diferentes dispositivos. 
+
+
+HOST -> Es cualquier dispositivo conectado a una red que pueda enviar y recibir informacion. 
+
+Ejemplos:
+
+* Computador.
+* Servidor.
+* Celular.
+* Camara IP.
+* Impresora.
+
+
+Cliente -> Es el dispositivo que solicita un servicio. 
+
+Ejemplos:
+
+* Abrir una pagina web.
+* Descargar un archivo.
+* Consultar una base de datos.
+
+
+Servidor -> Es el equipo encargado de ofrecer servicios a otros dispositivos. 
 
 Ejemplos: 
-Computador
-Celular
-Portatil 
+
+* Servidor Web.
+* Servidor DNS.
+* Servidor de archivos.
+* servidor de correo.
 
 
-ROUTER -> Dispositivo Que Conecta Redes
+Switch -> Dispositivo que conecta varios equipos dentro de una misma red local(LAN)
 
-Ejemplo:
-Tu Casa -> Router -> Internet
-
-
-Switch -> Conecta Dispositivos Dentro De Una Misma Red
-
-Ejemplo: 
-PC1 - PC2 - PC3 -> Switch
+Su funcion es permitir la comunicacion eficiente entre los dispositivos conectados. 
 
 
-Servidor -> Equipo Que Ofrece Servicios.
+Router -> Dispositivo encargado de conectar diferentes redes.
+
+Normalmente conecta una red privada con internet y decide por donde debe enviarse la informacion.
+
+
+Access Point (Punto De Acceso)
+
+Permite que dispositivos inalambricos se conecten a una red mediante Wi-Fi. 
+
+
+Firewall
+
+Dispositivo o software encargado de controlar el trafico de red mediante reglas de seguridad.
+
+Permite o bloquea conexiones dependiendo de la configuracion establecida.
+
+
+
+
+
+4. Tipos De Redes
+
+LAN (Local Area Network)
+
+Red que conecta dispositivos dentro de un area pequena.
 
 Ejemplos: 
-Servidor Web 
-Servidor DNS
-Servidor Correo
-Servidor Base De Datos
 
-
-
-Objetivo: 
-Permitir la comunicacion entre dispositivos. 
-
-Uso En SOC:
-Permite entender conexiones, eventos de red, origen de ataques y comunicaciones entre sistemas.
-
-
-
-
-
-
+* Casa
+* Oficina 
+* Colegio
+* Universidad
