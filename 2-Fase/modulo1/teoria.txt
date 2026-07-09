@@ -102,3 +102,82 @@ Ejemplos:
 * Oficina 
 * Colegio
 * Universidad
+
+
+WAN (Wide Area Network)
+
+Conecta redes ubicadas en diferentes ciudades o paises.
+
+El mejor ejemplo es el internet.
+
+
+MAN (Metropolitan Area Network)
+
+Conecta varias redes dentro de una misma ciudad.
+
+
+WLAN (Wireless Local Area Network)
+
+Es una LAN que utiliza comunicacion inalambrica mediante Wi-Fi.
+
+
+VPN (VIrtual Private Network)
+
+Permite crear una conexion segura y cifrada entre un usuario y otra red utilizando internet.
+
+Es ampliamente utilizada por empresas para el acceso remoto. 
+
+
+
+
+
+5. Comunicacion entre equipos
+
+La comunicacion entre dispositivos ocurre mediante el intercambio de datos.
+
+Ejemplo: 
+
+Computador -> Switch -> Router -> Internet -> Servidor 
+
+El servidor procesa la solicitud y responde siguiendo el camino inverso. 
+
+Toda comunicacion necesita un origen, un destino y reglas que permitan el intercambio de informacion. 
+
+
+
+
+
+6. Conceptos importantes 
+
+Comunicacion
+
+Proceso mediante el cual dos o mas dispositivos intercambian informacion.
+
+
+Medios de transmision
+
+Es el medio por donde viajan los datos. 
+
+Pueden ser: 
+
+* Cable Ethernet.
+* Fibra Optica.
+* Wi-Fi.
+
+
+Protocolo
+
+Conjunto de reglas que permiten la comunicacion entre dispositivos. 
+
+Mas adelante se estudiaran protocolos como: 
+
+* HTTP
+* HTTPS
+* DNS
+* SSH
+* FTP
+* SMTP
+
+ 
+
+
