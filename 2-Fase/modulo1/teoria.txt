@@ -1,5 +1,4 @@
-Teoria - Fundamentos De Redes
-
+FUNDAMENTOS DE RED
 
 1. Que es una red?
 
