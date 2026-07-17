@@ -1,57 +1,240 @@
-¿Que Es Una IP?
+1. ¿Que es una direccion IP?
 
-IP(Internet Protocol) -> Una Direccion IP Es Un Identificador Unico Que Permite Identificar Un Dispositivo Dentro De Una Red.
+Una direccion IP(Internet Protocol Address) es un identificador unico asignado a un dispositivo dentro de una red.
 
-Piensa En Una IP Como La Direccion De Una Casa.
+Su funcion principal es permitir que los dispositivos puedan identificarse, enviar y recibir informacion correctam
+ente dentro de una red.
 
-Casa: 
-Calle 38 # 44 - 50
+Podemos imaginar una direccion IP como la direccion de una casa.
 
-Red: 
+Si una persona quiere enviarte una carta, necesita conocer tu direccion para que llegue al destino correcto. 
+
+Con las redes sucede exactamente lo mismo.
+
+Los datos necesitan saber: 
+
+* Quien envia la informacion.
+* Quien debe recibirla.
+
+La direccion IP permite identificar tanto el origen como el destino de la comunicacion. 
+
+Para que sirve una direccion IP?
+
+Las direcciones IP permiten:
+
+* Identificar dispositivos dentro de una red.
+* Enviar informacion al destino correcto.
+* Recibir respuestas desde otros dispositivos.
+* Permitir la comunicacion entre redes. 
+* Identificar el origen y el destino del trafico. 
+
+
+
+
+
+2. IPV4
+
+Actualmente existen dos versiones principales del protocolo IP:
+
+* IPv4.
+* IPv6.
+
+En este modulo nos centraremos unicamente en IPv4, ya que sigue siendo la version mas utilizada. 
+
+Una direccion IPv4 esta formada por:
+
+* 32 bits
+* Divididos en 4 octetos
+* Cada octeto contiene 8 bits
+
+Ejemplo: 
+
+192.168.1.10
+
+Cada octeto puede tener un valor entre: 
+
+0 - 255 
+
+¿Por que el maximo es 255?
+
+Cada octeto tiene 8 bits. 
+
+con 8 bits podemos representar valores desde: 
+
+00000000
+
+Hasta:
+
+11111111
+
+Que en decimal corresponden a: 
+
+0 -> 255
+
+Mas adelante aprenderemos como funciona la conversion de binario a decimal.
+
+
+
+
+
+3. Direccion de Red
+
+Una direccion de red identifica la red completa. 
+
+No identifica un dispositivo. 
+
+Todos los dispositivos que pertenecen a una misma red comparten la misma direccion de red. 
+
+Ejemplo:
+
+RED -> 192.168.1.0
+
+Dispositivos:
+
+192.168.1.5
 192.168.1.20
+192.168.1.45
+192.168.1.200
 
+Todos Estos Pertenen A La Misma Red
 
-Estructura De Una IPv4
-
-192
-168
-1
-10
-
-Estos Grupos Se Llaman Octetos Porque Cada Uno Tiene 8 Bits
-
-
-Rango De Cada Octeto
-
-Cada Numero Puede Ir Desde: 
-0 Hasta 255
-
-
-IP Publica Vs IP Privada
-
-
-IP Privada -> Se Usan Dentro De Redes Internas, No Son Accesibles Directamente Desde Internet
-
-Rango 1
-
-10.0.0.0 - 10.255.255.255
-
-Rango 2
-
-172.16.0.0 - 172.31.255.255
-
-Rango 3
-
-192.168.0.0 - 192.168.255.255
-
-
-IP Publica -> Es Visible En Internet
-
-8.8.8.8 -> Servidor DNS De Google
+La direccion de red sirve para identificar el segmento de red al que pertenecen los dispositivos.
 
 
 
 
+
+4. Direccion de Host
+
+Una direccion de host identifica un dispositivo especifico dentro de una red. 
+
+Ejemplo:
+
+RED -> 192.168.1.0
+
+Dispositivos:
+
+192.168.1.10.
+192.168.1.20.
+192.168.1.50.
+
+Cada uno posee una direccion de host diferente. 
+
+Gracias a ello sabemos exactamente a que dispositivo debe llegar informacion.
+
+Diferencias entre Direccion de Red y Direccion de Host. 
+
+Direccion de Red
+
+* Identifica la red completa. 
+* Es comun para todos los dispositivos de la red.
+
+Direccion IP Publica
+
+* Identifica un dispositivo especifico.
+* Debe ser unica dentro de esa red.
+
+
+
+
+
+5. Direccion IP Publica
+
+Una IP publica es una direccion accesible desde internet. 
+
+Generalmente es asignada por el proveedor de internet (ISP) y permite que una red pueda comunicarse con otras redes atraves de internet
+
+Ejemplo: 
+
+186.115.24.20
+
+Caracteristicas:
+
+* Es visible desde internet. 
+* Debe ser unica a nivel mundial. 
+* Permite la comunicacion entre diferentes redes. 
+
+
+
+
+
+6. Direccion IP Privada
+
+Una IP privada se utiliza unicamente dentro de una red local(LAN).
+
+No puede ser accedida directamente desde Internet. 
+
+Es utilizada en hogares, empresas, colegios y universidades. 
+
+Los rangos privados son: 
+
+Clase A 
+
+10.0.0.0 -> 10.255.255.255
+
+Clase B
+
+172.16.0.0 -> 172.31.255.255
+
+Clase C 
+
+192.168.0.0 -> 192.168.255.255 
+
+
+Diferencias entre IP Publica e IP Privada
+
+IP Publica                                   IP Privada
+
+Visible desde internet                       Solo funciona dentro de una red local
+
+Unica en internet                            Puede repetirse en diferentes redes privadas
+
+La asigna el ISP                             Normalmente la asigna el router o el servidor DHCP de la red
+
+
+
+
+
+7. Mascara de Red
+
+La mascara de red permite distinguir que parte de una direccion IP corresponde a la red y que parte corresponde al host.
+
+Gracias a la mascara, un dispositivo puede determinar: 
+
+* Si otro dispositivo pertenece a su misma red. 
+* O si necesita enviar la informacion al router para llegar a otra red
+
+Mascaras Comunes: 
+
+255.0.0.0
+
+255.255.0.0
+
+255.255.255.0
+
+
+
+
+
+Conceptos Importantes
+
+Direccion IP
+* Identificador unico de un dispositivo dentro de una red. 
+
+IPv4 
+* Version del protocolo IP formada por 32 bits divididos en 4 octetos de 8 bits cada uno. 
+
+Direccion de Host
+* Identifica un dispositivo especifico dentro de una red. 
+
+IP Publica
+* Direccion accesible desde internet y asignada normalmente por el ISP
+
+IP Privada 
+* Direccion utilizada dentro de una red local y no accesible directamente desde internet. 
+
+Mascara de Red
+* Permite distinguir que parte de la direccion IP Corresponde a la red y cual corresponde al host.
 
 
 
